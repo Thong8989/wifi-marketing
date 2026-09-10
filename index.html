@@ -2,31 +2,48 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Tạp Hóa Ya Thông - WiFi Marketing</title>
+  <title>Tạp Hóa Ya Thông - WiFi Max</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       margin: 0;
       padding: 0;
-      text-align: center;
+      color: #fff;
     }
     header {
-      background: #2d89ef;
-      color: white;
-      padding: 30px;
+      text-align: center;
+      padding: 40px 20px;
     }
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 36px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .banner {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto;
+      flex-wrap: wrap;
+    }
+    .banner img {
+      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     .container {
-      margin: 30px auto;
+      background: rgba(255,255,255,0.1);
       max-width: 500px;
-      background: white;
+      margin: 30px auto;
       padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
     }
     label {
       display: block;
@@ -34,36 +51,60 @@
       text-align: left;
       font-weight: bold;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 10px;
     }
     button {
-      margin-top: 20px;
+      width: 100%;
       background: #ff6600;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
+      padding: 14px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 16px;
+      font-weight: bold;
+      transition: background 0.3s;
     }
     button:hover {
       background: #e65c00;
     }
     #greeting {
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
-      color: #2d89ef;
+      color: #ffd700;
+    }
+    .services {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+    }
+    .services h2 {
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+    .services ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    .services ul li {
+      margin: 10px 0;
+      font-size: 16px;
     }
     footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
       margin-top: 40px;
-      padding: 15px;
-      background: #333;
-      color: white;
       font-size: 14px;
     }
   </style>
@@ -71,11 +112,17 @@
 <body>
   <header>
     <h1>Tạp Hóa Ya Thông</h1>
-    <p>Chào mừng bạn đến với WiFi miễn phí!</p>
+    <p>WiFi Max tốc độ băng thông – trải nghiệm cực đỉnh!</p>
   </header>
 
+  <div class="banner">
+    <img src="images/pubg.jpg" alt="PUBG">
+    <img src="images/fifa.jpg" alt="FIFA">
+    <img src="images/freefire.jpg" alt="Free Fire">
+  </div>
+
   <div class="container">
-    <h2>Vui lòng nhập thông tin</h2>
+    <h2>Đăng nhập WiFi</h2>
     <form onsubmit="showGreeting(); return false;">
       <label for="name">Tên của bạn:</label>
       <input type="text" id="name" placeholder="Nhập tên">
@@ -83,27 +130,45 @@
       <label for="age">Độ tuổi:</label>
       <input type="number" id="age" placeholder="Nhập tuổi">
 
-      <button type="submit">Xác nhận</button>
+      <label for="gender">Giới tính:</label>
+      <select id="gender">
+        <option value="">-- Chọn giới tính --</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+
+      <button type="submit">Kết nối WiFi</button>
     </form>
 
     <p id="greeting"></p>
   </div>
 
+  <div class="services">
+    <h2>💳 Dịch vụ tại Tạp Hóa Ya Thông</h2>
+    <ul>
+      <li>🎮 Bán tất cả thẻ game phổ biến (PUBG, FIFA, Free Fire, Liên Quân, v.v.)</li>
+      <li>📱 Bán thẻ cào điện thoại của mọi nhà mạng</li>
+      <li>💡 Thanh toán hóa đơn điện, nước, internet, truyền hình</li>
+      <li>🌐 Hỗ trợ dịch vụ nạp tiền online nhanh chóng</li>
+    </ul>
+  </div>
+
   <footer>
     <p>📞 Liên hệ: 0823611673</p>
-    <p>Tạp Hóa Ya Thông luôn sẵn sàng phục vụ bạn!</p>
+    <p>Tạp Hóa Ya Thông – nơi kết nối tốc độ cao dành cho bạn!</p>
   </footer>
 
   <script>
     function showGreeting() {
       const name = document.getElementById('name').value.trim();
       const age = document.getElementById('age').value.trim();
+      const gender = document.getElementById('gender').value;
       let message = "";
 
-      if (name && age) {
-        message = `Xin chào ${name} (${age} tuổi)! Chúc bạn có trải nghiệm WiFi tuyệt vời tại Tạp Hóa Ya Thông 😊`;
+      if (name && age && gender) {
+        message = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn tận hưởng WiFi Max tốc độ băng thông tại Tạp Hóa Ya Thông 🎮🚀`;
       } else {
-        message = "Vui lòng nhập đầy đủ tên và độ tuổi.";
+        message = "Vui lòng nhập đầy đủ tên, tuổi và giới tính.";
       }
 
       document.getElementById('greeting').innerText = message;
