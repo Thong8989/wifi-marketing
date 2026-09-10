@@ -2,117 +2,150 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Tạp Hóa Ya Thông - WiFi Max</title>
+  <title>Tạp Hóa Ya Thông - WiFi Max Gaming</title>
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: 'Orbitron', sans-serif;
+      background: #0f0f0f;
+      color: #e0e0e0;
       margin: 0;
       padding: 0;
-      color: #fff;
     }
     header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
+      background: linear-gradient(90deg, #ff0080, #7928ca, #2afadf);
+      color: #fff;
+      text-shadow: 0 0 10px #000;
     }
     header h1 {
       margin: 0;
-      font-size: 36px;
+      font-size: 42px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
     }
     header p {
-      font-size: 18px;
+      font-size: 20px;
       margin-top: 10px;
     }
     .banner {
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin: 20px auto;
+      margin: 30px auto;
       flex-wrap: wrap;
     }
     .banner img {
-      width: 300px;
+      width: 280px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      box-shadow: 0 0 20px #ff0080;
+      transition: transform 0.3s;
+    }
+    .banner img:hover {
+      transform: scale(1.05);
     }
     .container {
-      background: rgba(255,255,255,0.1);
+      background: rgba(20,20,20,0.9);
       max-width: 500px;
-      margin: 30px auto;
-      padding: 25px;
+      margin: 40px auto;
+      padding: 30px;
       border-radius: 12px;
-      backdrop-filter: blur(6px);
+      box-shadow: 0 0 15px #2afadf;
+    }
+    .container h2 {
+      text-align: center;
+      color: #2afadf;
+      margin-bottom: 20px;
     }
     label {
       display: block;
       margin: 15px 0 5px;
-      text-align: left;
       font-weight: bold;
+      color: #ff0080;
     }
     input, select {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
       border-radius: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      background: #1e1e1e;
+      color: #fff;
     }
     button {
       width: 100%;
-      background: #ff6600;
+      background: linear-gradient(90deg, #ff0080, #7928ca);
       color: white;
       border: none;
       padding: 14px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       transition: background 0.3s;
     }
     button:hover {
-      background: #e65c00;
+      background: linear-gradient(90deg, #2afadf, #00ff80);
     }
     #greeting {
       margin-top: 20px;
       font-size: 20px;
       font-weight: bold;
-      color: #ffd700;
+      color: #00ff80;
+      text-align: center;
     }
     .services {
-      max-width: 700px;
-      margin: 40px auto;
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
+      max-width: 900px;
+      margin: 50px auto;
+      background: rgba(30,30,30,0.9);
+      padding: 30px;
       border-radius: 12px;
-      backdrop-filter: blur(6px);
+      box-shadow: 0 0 15px #7928ca;
     }
     .services h2 {
-      margin-bottom: 15px;
+      text-align: center;
       color: #ffd700;
+      margin-bottom: 20px;
     }
     .services ul {
       list-style: none;
       padding: 0;
-      text-align: left;
+      font-size: 18px;
     }
     .services ul li {
-      margin: 10px 0;
-      font-size: 16px;
+      margin: 12px 0;
+      color: #e0e0e0;
+    }
+    .service-images {
+      display:flex; 
+      justify-content:center; 
+      gap:20px; 
+      flex-wrap:wrap; 
+      margin-top:20px;
+    }
+    .service-images img {
+      width:200px; 
+      border-radius:10px; 
+      box-shadow:0 0 15px #ff0080;
+      transition: transform 0.3s;
+    }
+    .service-images img:hover {
+      transform: scale(1.05);
     }
     footer {
       text-align: center;
       padding: 20px;
-      background: rgba(0,0,0,0.6);
+      background: #111;
       margin-top: 40px;
       font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Tạp Hóa Ya Thông</h1>
-    <p>WiFi Max tốc độ băng thông – trải nghiệm cực đỉnh!</p>
+    <p>WiFi Max tốc độ băng thông – Gaming Experience 🚀🎮</p>
   </header>
 
   <div class="banner">
@@ -146,11 +179,18 @@
   <div class="services">
     <h2>💳 Dịch vụ tại Tạp Hóa Ya Thông</h2>
     <ul>
-      <li>🎮 Bán tất cả thẻ game phổ biến (PUBG, FIFA, Free Fire, Liên Quân, v.v.)</li>
-      <li>📱 Bán thẻ cào điện thoại của mọi nhà mạng</li>
+      <li>🎮 Bán thẻ game: Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...</li>
+      <li>📱 Bán thẻ cào điện thoại: Viettel, Vinaphone, Mobifone và nhiều nhà mạng khác</li>
       <li>💡 Thanh toán hóa đơn điện, nước, internet, truyền hình</li>
       <li>🌐 Hỗ trợ dịch vụ nạp tiền online nhanh chóng</li>
     </ul>
+
+    <div class="service-images">
+      <img src="images/garena-card.jpg" alt="Thẻ Garena">
+      <img src="images/zing-card.jpg" alt="Thẻ Zing">
+      <img src="images/viettel-card.jpg" alt="Thẻ Viettel">
+      <img src="images/vinaphone-card.jpg" alt="Thẻ Vinaphone">
+    </div>
   </div>
 
   <footer>
@@ -166,7 +206,7 @@
       let message = "";
 
       if (name && age && gender) {
-        message = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn tận hưởng WiFi Max tốc độ băng thông tại Tạp Hóa Ya Thông 🎮🚀`;
+        message = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn tận hưởng WiFi Max Gaming tại Tạp Hóa Ya Thông 🎮🔥`;
       } else {
         message = "Vui lòng nhập đầy đủ tên, tuổi và giới tính.";
       }
