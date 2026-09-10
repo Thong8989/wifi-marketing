@@ -2,35 +2,112 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Cửa hàng tiện lợi Thông</title>
+  <title>Tạp Hóa Ya Thông - WiFi Marketing</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; }
-    header { background: #2d89ef; color: white; padding: 20px; }
-    .btn { background: #ff6600; color: white; padding: 15px 25px; text-decoration: none; border-radius: 5px; }
-    .promo { margin: 20px; padding: 20px; background: white; border-radius: 8px; }
-    footer { margin-top: 30px; font-size: 14px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #2d89ef;
+      color: white;
+      padding: 30px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .container {
+      margin: 30px auto;
+      max-width: 500px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      text-align: left;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      background: #ff6600;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #e65c00;
+    }
+    #greeting {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2d89ef;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      background: #333;
+      color: white;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Cửa hàng tiện lợi Thông</h1>
+    <h1>Tạp Hóa Ya Thông</h1>
     <p>Chào mừng bạn đến với WiFi miễn phí!</p>
   </header>
 
-  <a href="#" class="btn">Kết nối WiFi ngay</a>
+  <div class="container">
+    <h2>Vui lòng nhập thông tin</h2>
+    <form onsubmit="showGreeting(); return false;">
+      <label for="name">Tên của bạn:</label>
+      <input type="text" id="name" placeholder="Nhập tên">
 
-  <div class="promo">
-    <h2>🎁 Khuyến mãi hôm nay</h2>
-    <p>Mua 2 tặng 1 nước giải khát</p>
-  </div>
+      <label for="age">Độ tuổi:</label>
+      <input type="number" id="age" placeholder="Nhập tuổi">
 
-  <div class="promo">
-    <h2>💳 Dịch vụ chuyển tiền & thanh toán</h2>
-    <p>Hỗ trợ chuyển tiền nhanh, thanh toán hóa đơn điện/nước ngay tại quầy.</p>
+      <button type="submit">Xác nhận</button>
+    </form>
+
+    <p id="greeting"></p>
   </div>
 
   <footer>
-    <p>Liên hệ: 0123 456 789 | Zalo/Facebook: Cửa hàng tiện lợi Thông</p>
+    <p>📞 Liên hệ: 0823611673</p>
+    <p>Tạp Hóa Ya Thông luôn sẵn sàng phục vụ bạn!</p>
   </footer>
+
+  <script>
+    function showGreeting() {
+      const name = document.getElementById('name').value.trim();
+      const age = document.getElementById('age').value.trim();
+      let message = "";
+
+      if (name && age) {
+        message = `Xin chào ${name} (${age} tuổi)! Chúc bạn có trải nghiệm WiFi tuyệt vời tại Tạp Hóa Ya Thông 😊`;
+      } else {
+        message = "Vui lòng nhập đầy đủ tên và độ tuổi.";
+      }
+
+      document.getElementById('greeting').innerText = message;
+    }
+  </script>
 </body>
 </html>
