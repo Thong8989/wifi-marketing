@@ -13,7 +13,7 @@
             font-family: 'Inter', sans-serif;
         }
         body {
-            background: radial-gradient(circle at top, #1a1a2e 0%, #0a0a0c 100%);
+            background: radial-gradient(circle at top, #0a0a0a 0%, #000 100%);
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -23,143 +23,140 @@
         }
         .container {
             width: 100%;
-            max-width: 420px;
-            background: rgba(20, 20, 30, 0.85);
-            backdrop-filter: blur(10px);
+            max-width: 400px;
+            background: rgba(15, 15, 20, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             color: #00ffcc;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         .header p {
-            font-size: 13px;
-            color: #a0a0c0;
+            font-size: 12px;
+            color: #888;
         }
         .realtime-clock {
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
             color: #00ffcc;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             background: rgba(0, 255, 204, 0.05);
-            padding: 6px;
-            border-radius: 6px;
+            padding: 5px;
+            border-radius: 4px;
             border: 1px dashed rgba(0, 255, 204, 0.2);
         }
         .timer-box {
             background: rgba(255, 153, 0, 0.1);
             border: 1px solid rgba(255, 153, 0, 0.3);
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 10px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .timer-box h3 {
-            font-size: 12px;
+            font-size: 11px;
             color: #ff9900;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         #countdown {
             font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             color: #fff;
             font-weight: bold;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .form-group label {
             display: block;
-            font-size: 13px;
-            margin-bottom: 6px;
-            color: #ccc;
+            font-size: 12px;
+            margin-bottom: 4px;
+            color: #bbb;
         }
         .form-control {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background: #111;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 6px;
             color: #fff;
-            font-size: 14px;
+            font-size: 13px;
             outline: none;
-            transition: border-color 0.3s;
         }
         .form-control:focus {
             border-color: #00ffcc;
         }
         .carrier-container {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .carrier-card {
             cursor: pointer;
             border: 2px solid #333;
-            border-radius: 8px;
-            padding: 8px;
+            border-radius: 6px;
+            padding: 6px;
             background: #111;
             text-align: center;
             flex: 1;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         .carrier-card.selected {
             border-color: #00ffcc;
-            background: rgba(0, 255, 204, 0.1);
+            background: rgba(0, 255, 204, 0.15);
         }
         .carrier-badge {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
-            padding: 6px 4px;
+            padding: 5px 2px;
             border-radius: 4px;
             color: #fff;
         }
         .btn-submit {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #00ffcc 0%, #00b386 100%);
-            color: #0a0a0c;
+            padding: 12px;
+            background: #00ffcc;
+            color: #000;
             border: none;
-            border-radius: 8px;
-            font-size: 15px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
-            transition: opacity 0.3s;
         }
         .btn-submit:hover {
             opacity: 0.9;
         }
         .momo-section {
-            margin-top: 20px;
+            margin-top: 15px;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
+            padding-top: 12px;
         }
         .momo-section p {
-            font-size: 12px;
-            color: #a0a0c0;
-            margin-bottom: 10px;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 8px;
         }
         .momo-qr {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             background: #fff;
-            padding: 6px;
-            border-radius: 8px;
+            padding: 4px;
+            border-radius: 6px;
             margin: 0 auto;
         }
     </style>
@@ -175,14 +172,14 @@
         <div class="realtime-clock" id="realtimeClock">Đang tải thời gian...</div>
 
         <div class="timer-box">
-            <h3>Thời gian sử dụng miễn phí còn lại</h3>
+            <h3>Thời gian sử dụng còn lại</h3>
             <div id="countdown">24:00:00</div>
         </div>
 
         <form id="wifiForm">
             <div class="form-group">
-                <label>Họ và tên của bạn</label>
-                <input type="text" id="name" class="form-control" placeholder="Nhập tên của bạn..." required>
+                <label>Họ và tên</label>
+                <input type="text" id="name" class="form-control" placeholder="Nhập tên..." required>
             </div>
 
             <div class="form-group">
@@ -191,7 +188,7 @@
             </div>
 
             <div class="form-group">
-                <label>Chọn nhà mạng giao dịch / mua thẻ</label>
+                <label>Chọn nhà mạng giao dịch</label>
                 <div class="carrier-container">
                     <div class="carrier-card" onclick="selectCarrier(this, 'VIETTEL')">
                         <div class="carrier-badge" style="background: #E00707;">VIETTEL</div>
@@ -206,13 +203,12 @@
                 <input type="hidden" id="selectedCarrier" value="">
             </div>
 
-            <button type="submit" class="btn-submit">Kết Nối Internet Ngay</button>
+            <button type="submit" class="btn-submit">Kết Nối WiFi</button>
         </form>
 
         <div class="momo-section">
-            <p>Quét mã ủng hộ / thanh toán nhanh qua MoMo</p>
-            <!-- Thay src bằng link ảnh QR MoMo thực tế của bạn -->
-            <img src="https://via.placeholder.com/100" alt="QR MoMo" class="momo-qr">
+            <p>Quét mã ủng hộ / thanh toán MoMo</p>
+            <img src="https://via.placeholder.com/90" alt="QR MoMo" class="momo-qr">
         </div>
     </div>
 
@@ -220,9 +216,7 @@
         // 1. Đồng hồ thời gian thực
         function updateClock() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('vi-VN');
-            const dateString = now.toLocaleDateString('vi-VN');
-            document.getElementById('realtimeClock').innerText = `📅 ${dateString} | ⏰ ${timeString}`;
+            document.getElementById('realtimeClock').innerText = `📅 ${now.toLocaleDateString('vi-VN')} | ⏰ ${now.toLocaleTimeString('vi-VN')}`;
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -234,7 +228,7 @@
             document.getElementById('selectedCarrier').value = carrierName;
         }
 
-        // 3. Đếm ngược 24h sử dụng localStorage
+        // 3. Đếm ngược 24h dùng localStorage
         const TIMER_KEY = 'yathong_wifi_expiry';
         let totalSeconds = 24 * 3600;
 
@@ -250,23 +244,18 @@
             localStorage.setItem(TIMER_KEY, Date.now() + totalSeconds * 1000);
         }
 
-        const countdownInterval = setInterval(() => {
-            let hours = Math.floor(totalSeconds / 3600);
-            let minutes = Math.floor((totalSeconds % 3600) / 60);
-            let seconds = totalSeconds % 60;
-
-            document.getElementById('countdown').innerText = 
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
+        setInterval(() => {
             if (totalSeconds > 0) {
                 totalSeconds--;
-            } else {
-                clearInterval(countdownInterval);
-                document.getElementById('countdown').innerText = "Đã hết hạn 24h!";
+                let h = Math.floor(totalSeconds / 3600);
+                let m = Math.floor((totalSeconds % 3600) / 60);
+                let s = totalSeconds % 60;
+                document.getElementById('countdown').innerText = 
+                    `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
             }
         }, 1000);
 
-        // 4. Xử lý gửi form về Google Apps Script
+        // 4. Gửi dữ liệu về Google Apps Script
         document.getElementById('wifiForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -282,11 +271,11 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, phone, carrier, time: new Date().toLocaleString() })
                 }).then(() => {
-                    alert('Kết nối thành công! Chúc bạn trải nghiệm mạng vui vẻ tại Tạp Hóa Ya Thông.');
-                    window.location.href = "https://google.com"; // Hoặc trang đích mong muốn sau khi đăng nhập
+                    alert('Kết nối thành công!');
+                    window.location.href = "https://google.com";
                 }).catch(error => console.error('Error!', error.message));
             } else {
-                alert('Kết nối thành công! (Chưa cấu hình Google Apps Script URL)');
+                alert('Kết nối thành công!');
                 window.location.href = "https://google.com";
             }
         });
