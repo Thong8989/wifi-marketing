@@ -41,7 +41,7 @@
       justify-content: center;
       align-items: center;
       gap: 15px;
-      margin: 30px auto;
+      margin: 40px auto 20px;
       flex-wrap: wrap;
       padding: 0 20px;
       max-width: 1200px;
@@ -337,15 +337,6 @@
     <p>WiFi Max Tốc Độ – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
   </header>
 
-  <!-- Banner Game -->
-  <div class="banner">
-    <img src="images/pubg.jpg" alt="PUBG">
-    <img src="images/fifa.jpg" alt="FIFA Online 4">
-    <img src="images/freefire.jpg" alt="Free Fire">
-    <img src="images/lienquan.jpg" alt="Liên Quân">
-    <img src="images/callofduty.jpg" alt="Call of Duty">
-  </div>
-
   <!-- BỘ ĐẾM NGƯỢC & NGÀY THÁNG NĂM GIỜ -->
   <div class="timer-box">
     <div class="timer-title">⏱️ Thời gian truy cập còn lại:</div>
@@ -459,16 +450,12 @@
       Trang bị hệ thống phát sóng chuyên dụng doanh nghiệp <b>Aruba AP-345 Wave 2</b> kết hợp đường truyền tốc độ cao đối xứng <b>500 Mbps (Up/Down)</b>:
     </p>
 
-    <!-- Bố cục lưới: Trái là ảnh thiết bị, Phải là các tính năng ưu việt -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: center;">
-      
-      <!-- Cột Hình Ảnh Thiết Bị -->
       <div style="text-align: center;">
         <img src="images/aruba-345.jpg" alt="Aruba AP-345" style="width: 100%; max-width: 300px; height: 180px; object-fit: cover; border-radius: 12px; border: 2px solid #00ff80; box-shadow: 0 0 15px rgba(0, 255, 128, 0.4);">
         <p style="color: #aaa; font-size: 13px; margin-top: 8px;">Thiết bị Aruba AP-345 chuẩn doanh nghiệp tại quán</p>
       </div>
 
-      <!-- Cột Nội Dung Ưu Điểm -->
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <div style="background: rgba(0,0,0,0.6); padding: 12px; border-radius: 10px; border-left: 4px solid #00ff80;">
           <h4 style="color: #00ff80; margin: 0 0 4px 0;">⚡ Chống Giật Lag / Ping Thấp</h4>
@@ -485,7 +472,6 @@
           <p style="color: #ccc; font-size: 13px; margin: 0;">Thoải mái chiến Liên Quân, PUBG, Free Fire, FIFA... với độ trễ tối ưu nhất.</p>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -508,8 +494,19 @@
     <a href="https://nhantien.momo.vn/0823611673" target="_blank" class="btn-momo">🚀 Mở Ví MoMo Chuyển Tiền</a>
   </div>
 
+  <!-- Banner Game -->
+  <div class="banner">
+    <img src="images/pubg.jpg" alt="PUBG">
+    <img src="images/fifa.jpg" alt="FIFA Online 4">
+    <img src="images/freefire.jpg" alt="Free Fire">
+    <img src="images/lienquan.jpg" alt="Liên Quân">
+    <img src="images/callofduty.jpg" alt="Call of Duty">
+  </div>
+
+  <!-- Footer (Đã tích hợp chính xác link Facebook của bạn) -->
   <footer>
     <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
+    <p>💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
     <p>Tạp Hóa Ya Thông – Phục vụ tận tâm!</p>
   </footer>
 
@@ -581,7 +578,7 @@
 
     startTimer();
 
-    // --- SCRIPT ĐO TỐC ĐỘ MẠNG (SPEED TEST) - ĐÃ TỐI ƯU CHỐNG LỖI ---
+    // --- SCRIPT ĐO TỐC ĐỘ MẠNG (SPEED TEST) ---
     function runSpeedTest() {
       const resultEl = document.getElementById('speedResult');
       const btnTest = document.getElementById('btnTest');
@@ -593,7 +590,7 @@
 
       const imageAddr = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Falken_Eifel_I.jpg?t=" + Date.now();
       const startTime = performance.now();
-      const downloadSize = 730000; // Kích thước ước tính (bytes)
+      const downloadSize = 730000;
 
       const downloadImage = new Image();
       
