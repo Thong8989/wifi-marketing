@@ -60,7 +60,7 @@
       box-shadow: 0 0 25px #ff0080;
     }
 
-    /* BỘ ĐẾM NGƯỢC & DÒNG NGHÀY GIỜ REAL-TIME */
+    /* BỘ ĐẾM NGƯỢC & DÒNG NGÀY GIỜ REAL-TIME */
     .timer-box {
       background: rgba(0, 0, 0, 0.8);
       border: 2px solid #00ff80;
@@ -84,7 +84,6 @@
       letter-spacing: 2px;
       text-shadow: 0 0 10px #ff0080;
     }
-    /* Dòng Ngày Tháng Năm Giờ */
     .datetime-display {
       font-size: 14px;
       color: #ffd700;
@@ -94,7 +93,7 @@
       letter-spacing: 1px;
     }
 
-    /* FORM KẾT NỐI WIFI */
+    /* FORM KẾT NỐI WIFI & SPEED TEST */
     .container {
       background: rgba(25, 25, 25, 0.95);
       max-width: 480px;
@@ -338,7 +337,7 @@
     <p>WiFi Max Tốc Độ – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
   </header>
 
-  <!-- Banner Game (Đã trỏ đúng vào thư mục images/) -->
+  <!-- Banner Game -->
   <div class="banner">
     <img src="images/pubg.jpg" alt="PUBG">
     <img src="images/fifa.jpg" alt="FIFA Online 4">
@@ -404,6 +403,18 @@
     </form>
 
     <p id="greeting"></p>
+  </div>
+
+  <!-- KHU VỰC ĐO TỐC ĐỘ MẠNG (SPEED TEST) -->
+  <div class="container speed-section">
+    <h2>⚡ Kiểm Tra Tốc Độ WiFi</h2>
+    <p style="text-align: center; color: #aaa; font-size: 14px; margin-bottom: 15px;">Kiểm tra độ mượt của mạng Tạp Hóa Ya Thông!</p>
+    
+    <div id="speedResult" style="text-align: center; font-size: 22px; color: #00ff80; font-weight: bold; margin: 15px 0;">
+      Sẵn sàng kiểm tra
+    </div>
+
+    <button type="button" id="btnTest" onclick="runSpeedTest()" style="background: linear-gradient(90deg, #00c3ff, #00ff80);">BẮT ĐẦU ĐO TỐC ĐỘ</button>
   </div>
 
   <!-- Khai Thác Quảng Cáo Dịch Vụ -->
@@ -532,6 +543,60 @@
     }
 
     startTimer();
+
+    // --- SCRIPT ĐO TỐC ĐỘ MẠNG (SPEED TEST) ---
+    function runSpeedTest() {
+      const resultEl = document.getElementById('speedResult');
+      const btnTest = document.getElementById('btnTest');
+      
+      resultEl.style.color = "#ffd700";
+      resultEl.innerText = "Đang đo tốc độ mạng...";
+      btnTest.disabled = true;
+      btnTest.innerText = "Đang kiểm tra...";
+
+      const imageAddr = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Falken_Eifel_I.jpg?" + Math.random();
+      const startTime = new Date().getTime();
+      const downloadSize = 730000; // Kích thước ước tính (bytes)
+
+      const downloadImage = new Image();
+      
+      downloadImage.onload = function () {
+        const endTime = new Date().getTime();
+        const duration = (endTime - startTime) / 1000;
+        
+        if (duration === 0) {
+          resultEl.innerText = "Mạng siêu tốc! 🚀";
+          resetButton();
+          return;
+        }
+
+        const bitsLoaded = downloadSize * 8;
+        const speedBps = bitsLoaded / duration;
+        const speedKbps = speedBps / 1024;
+        const speedMbps = speedKbps / 1024;
+
+        resultEl.style.color = "#00ff80";
+        if (speedMbps >= 1) {
+          resultEl.innerText = `Tốc độ: ${speedMbps.toFixed(2)} Mbps 🔥`;
+        } else {
+          resultEl.innerText = `Tốc độ: ${speedKbps.toFixed(2)} Kbps 🐢`;
+        }
+        resetButton();
+      };
+
+      downloadImage.onerror = function () {
+        resultEl.style.color = "#ff4d4d";
+        resultEl.innerText = "Lỗi kết nối kiểm tra tốc độ!";
+        resetButton();
+      };
+
+      downloadImage.src = imageAddr;
+
+      function resetButton() {
+        btnTest.disabled = false;
+        btnTest.innerText = "BẮT ĐẦU ĐO TỐC ĐỘ";
+      }
+    }
 
     // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP ---
     function handleFormSubmit(event) {
