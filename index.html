@@ -106,6 +106,10 @@
     button:hover {
       transform: scale(1.03);
     }
+    button:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
     #greeting {
       margin-top: 20px;
       font-size: 18px;
@@ -301,10 +305,10 @@
       <div class="service-card">
         <h3>🛒 Tạp Hóa & Thẻ Game</h3>
         <ul>
-          <li>🎮 **Thẻ Game:** Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...</li>
-          <li>📱 **Thẻ Điện Thoại:** Viettel, Vinaphone, Mobifone...</li>
-          <li>💡 **Hóa Đơn:** Điện, nước, internet, truyền hình.</li>
-          <li>🥤 **Bánh kẹo, nước giải khát** đa dạng phục vụ tại chỗ.</li>
+          <li>🎮 <b>Thẻ Game:</b> Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...</li>
+          <li>📱 <b>Thẻ Điện Thoại:</b> Viettel, Vinaphone, Mobifone...</li>
+          <li>💡 <b>Hóa Đơn:</b> Điện, nước, internet, truyền hình.</li>
+          <li>🥤 <b>Bánh kẹo, nước giải khát</b> đa dạng phục vụ tại chỗ.</li>
         </ul>
       </div>
 
@@ -312,9 +316,9 @@
       <div class="service-card">
         <h3>🖨️ In Ấn & Photocopy</h3>
         <ul>
-          <li>📄 **Photocopy / In tài liệu** giá rẻ, lấy ngay.</li>
-          <li>🔍 **Scan tài liệu, giấy tờ** chất lượng cao gửi Email/Zalo.</li>
-          <li>📑 **Ép dẻo, ép lụa** căn cước, giấy tờ xe.</li>
+          <li>📄 <b>Photocopy / In tài liệu</b> giá rẻ, lấy ngay.</li>
+          <li>🔍 <b>Scan tài liệu, giấy tờ</b> chất lượng cao gửi Email/Zalo.</li>
+          <li>📑 <b>Ép dẻo, ép lụa</b> căn cước, giấy tờ xe.</li>
         </ul>
       </div>
 
@@ -322,9 +326,9 @@
       <div class="service-card">
         <h3>🚗 Xe Dịch Vụ & Vận Tải</h3>
         <ul>
-          <li>💒 **Xe cưới hỏi:** Đời mới, sang trọng, trang trí đẹp.</li>
-          <li>🏖️ **Tour du lịch:** Nhận hợp đồng tham quan, du lịch gia đình.</li>
-          <li>📦 **Vận tải hàng hóa:** Nhanh chóng, uy tín, giá hợp lý.</li>
+          <li>💒 <b>Xe cưới hỏi:</b> Đời mới, sang trọng, trang trí đẹp.</li>
+          <li>🏖️ <b>Tour du lịch:</b> Nhận hợp đồng tham quan, du lịch gia đình.</li>
+          <li>📦 <b>Vận tải hàng hóa:</b> Nhanh chóng, uy tín, giá hợp lý.</li>
         </ul>
       </div>
     </div>
@@ -356,19 +360,61 @@
   </footer>
 
   <script>
-    function showGreeting() {
-      const name = document.getElementById('name').value.trim();
-      const age = document.getElementById('age').value.trim();
-      const gender = document.getElementById('gender').value;
-      const greetingEl = document.getElementById('greeting');
+    // Link API từ Google Apps Script của bạn
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylZqACKaYXvZ7luf8gCAKwFWtfrs7dZH7yOCFzzQewMvH5z-HnF04E4MpPb-LSsLd8Hg/exec";
 
-      if (name && age && gender) {
-        greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi tốc độ cao tại Tạp Hóa Ya Thông 🎮⚡`;
-      } else {
+    function showGreeting() {
+      const nameInput = document.getElementById('name');
+      const ageInput = document.getElementById('age');
+      const genderInput = document.getElementById('gender');
+      
+      const name = nameInput.value.trim();
+      const age = ageInput.value.trim();
+      const gender = genderInput.value;
+      const greetingEl = document.getElementById('greeting');
+      const submitBtn = document.querySelector('.container button');
+
+      if (!name || !age || !gender) {
         greetingEl.style.color = "#ff4d4d";
         greetingEl.innerText = "Vui lòng nhập và chọn đầy đủ thông tin.";
+        return;
       }
+
+      // Đổi trạng thái nút bấm tránh bấm nhiều lần
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Đang kết nối...";
+
+      // Gửi dữ liệu về Google Sheets
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          age: age,
+          gender: gender
+        })
+      })
+      .then(() => {
+        greetingEl.style.color = "#ffd700";
+        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi tốc độ cao tại Tạp Hóa Ya Thông 🎮⚡`;
+        submitBtn.disabled = false;
+        submitBtn.innerText = "TRUY CẬP INTERNET";
+        
+        // Reset form sau khi gửi
+        nameInput.value = '';
+        ageInput.value = '';
+        genderInput.value = '';
+      })
+      .catch(error => {
+        console.error('Lỗi gửi dữ liệu:', error);
+        greetingEl.style.color = "#ffd700";
+        greetingEl.innerText = `Xin chào ${name}! Kết nối WiFi thành công 🎮⚡`;
+        submitBtn.disabled = false;
+        submitBtn.innerText = "TRUY CẬP INTERNET";
+      });
     }
   </script>
 </body>
