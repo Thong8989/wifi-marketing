@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tạp Hóa Ya Thông - WiFi Max Gaming</title>
   <!-- Font gaming từ Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
@@ -36,9 +37,12 @@
       gap: 25px;
       margin: 40px auto;
       flex-wrap: wrap;
+      padding: 0 20px;
     }
     .banner img {
-      width: 300px;
+      width: 280px;
+      height: 160px;
+      object-fit: cover;
       border-radius: 15px;
       box-shadow: 0 0 25px #00ff80;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -48,12 +52,13 @@
       box-shadow: 0 0 35px #ff0080;
     }
     .container {
-      background: rgba(25,25,25,0.95);
-      max-width: 550px;
+      background: rgba(25, 25, 25, 0.95);
+      max-width: 500px;
       margin: 50px auto;
       padding: 35px;
       border-radius: 15px;
       box-shadow: 0 0 20px #00c3ff;
+      box-sizing: border-box;
     }
     .container h2 {
       text-align: center;
@@ -69,12 +74,18 @@
     input, select {
       width: 100%;
       padding: 12px;
-      border: none;
+      border: 1px solid #333;
       border-radius: 8px;
       margin-bottom: 15px;
       background: #1e1e1e;
       color: #fff;
       font-size: 16px;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #00ff80;
+      box-shadow: 0 0 10px #00ff80;
     }
     button {
       width: 100%;
@@ -89,22 +100,93 @@
       transition: transform 0.3s;
     }
     button:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
     #greeting {
       margin-top: 25px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       color: #ffd700;
       text-align: center;
+      line-height: 1.5;
     }
+
+    /* KHU VỰC THANH TOÁN MOMO VÍ TRẢ SAU */
+    .momo-section {
+      max-width: 500px;
+      margin: 40px auto;
+      background: linear-gradient(145deg, #2a081a 0%, #15000c 100%);
+      border: 2px solid #a50064;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(165, 0, 100, 0.6);
+      box-sizing: border-box;
+    }
+    .momo-section h3 {
+      color: #ff5ea6;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .badge-trasau {
+      display: inline-block;
+      background: #a50064;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #ff0080;
+    }
+    .qr-box {
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    .qr-box img {
+      width: 200px;
+      height: 200px;
+      display: block;
+    }
+    .momo-info {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #fff;
+    }
+    .momo-info span {
+      color: #00ff80;
+      font-weight: bold;
+    }
+    .btn-momo {
+      display: inline-block;
+      text-decoration: none;
+      background: #a50064;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .btn-momo:hover {
+      background: #d60082;
+      transform: scale(1.05);
+    }
+
     .services {
-      max-width: 950px;
+      max-width: 900px;
       margin: 60px auto;
-      background: rgba(35,35,35,0.95);
+      background: rgba(35, 35, 35, 0.95);
       padding: 35px;
       border-radius: 15px;
       box-shadow: 0 0 20px #ff0080;
+      box-sizing: border-box;
     }
     .services h2 {
       text-align: center;
@@ -115,27 +197,30 @@
       list-style: none;
       padding: 0;
       font-size: 18px;
+      line-height: 1.8;
     }
     .services ul li {
       margin: 12px 0;
       color: #e0e0e0;
     }
     .service-images {
-      display:flex; 
-      justify-content:center; 
-      gap:25px; 
-      flex-wrap:wrap; 
-      margin-top:25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 25px;
     }
     .service-images img {
-      width:200px; 
-      border-radius:12px; 
-      box-shadow:0 0 20px #00ff80;
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ff80;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .service-images img:hover {
       transform: scale(1.08);
-      box-shadow:0 0 30px #ff0080;
+      box-shadow: 0 0 25px #ff0080;
     }
     footer {
       text-align: center;
@@ -145,9 +230,13 @@
       font-size: 15px;
       color: #aaa;
     }
+    footer p {
+      margin: 5px 0;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Tạp Hóa Ya Thông</h1>
     <p>WiFi Max tốc độ băng thông – Gaming Experience 🚀🎮</p>
@@ -167,13 +256,13 @@
     <h2>Đăng nhập WiFi</h2>
     <form onsubmit="showGreeting(); return false;">
       <label for="name">Tên của bạn:</label>
-      <input type="text" id="name" placeholder="Nhập tên">
+      <input type="text" id="name" placeholder="Nhập tên" required>
 
       <label for="age">Độ tuổi:</label>
-      <input type="number" id="age" placeholder="Nhập tuổi">
+      <input type="number" id="age" placeholder="Nhập tuổi" min="1" max="100" required>
 
       <label for="gender">Giới tính:</label>
-      <select id="gender">
+      <select id="gender" required>
         <option value="">-- Chọn giới tính --</option>
         <option value="Nam">Nam</option>
         <option value="Nữ">Nữ</option>
@@ -183,6 +272,27 @@
     </form>
 
     <p id="greeting"></p>
+  </div>
+
+  <!-- PHẦN THANH TOÁN MOMO & VÍ TRẢ SAU -->
+  <div class="momo-section">
+    <h3>📱 Thanh Toán Nhanh Qua MoMo</h3>
+    <div class="badge-trasau">💳 Chấp nhận thanh toán bằng VÍ TRẢ SAU</div>
+    
+    <div>
+      <div class="qr-box">
+        <!-- Thay link ảnh này bằng QR MoMo cá nhân của bạn -->
+        <img src="images/momo-qr.jpg" alt="Mã QR Thanh Toán MoMo">
+      </div>
+    </div>
+
+    <div class="momo-info">
+      <p>Số tài khoản MoMo: <span>0823611673</span></p>
+      <p>Chủ tài khoản: <span>Tạp Hóa Ya Thông</span></p>
+      <p><i>Nạp thẻ game, mua dịch vụ - Trả sau cực tiện lợi!</i></p>
+    </div>
+
+    <a href="https://nhantien.momo.vn/0823611673" target="_blank" class="btn-momo">🚀 Mở Ví MoMo Chuyển Tiền</a>
   </div>
 
   <!-- Dịch vụ -->
@@ -214,15 +324,15 @@
       const name = document.getElementById('name').value.trim();
       const age = document.getElementById('age').value.trim();
       const gender = document.getElementById('gender').value;
-      let message = "";
+      const greetingEl = document.getElementById('greeting');
 
       if (name && age && gender) {
-        message = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn tận hưởng WiFi Max Gaming tại Tạp Hóa Ya Thông 🎮🔥`;
+        greetingEl.style.color = "#ffd700";
+        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn tận hưởng WiFi Max Gaming tại Tạp Hóa Ya Thông 🎮🔥`;
       } else {
-        message = "Vui lòng nhập đầy đủ tên, tuổi và giới tính.";
+        greetingEl.style.color = "#ff4d4d";
+        greetingEl.innerText = "Vui lòng nhập và chọn đầy đủ thông tin.";
       }
-
-      document.getElementById('greeting').innerText = message;
     }
   </script>
 </body>
