@@ -60,7 +60,7 @@
       box-shadow: 0 0 25px #ff0080;
     }
 
-    /* BỘ ĐẾM NGƯỢC 24H */
+    /* BỘ ĐẾM NGƯỢC & DÒNG NGHÀY GIỜ REAL-TIME */
     .timer-box {
       background: rgba(0, 0, 0, 0.8);
       border: 2px solid #00ff80;
@@ -68,7 +68,7 @@
       padding: 15px;
       text-align: center;
       margin: 20px auto;
-      max-width: 320px;
+      max-width: 360px;
       box-shadow: 0 0 15px rgba(0, 255, 128, 0.4);
     }
     .timer-title {
@@ -83,6 +83,15 @@
       color: #ff0080;
       letter-spacing: 2px;
       text-shadow: 0 0 10px #ff0080;
+    }
+    /* Dòng Ngày Tháng Năm Giờ */
+    .datetime-display {
+      font-size: 14px;
+      color: #ffd700;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(0, 255, 128, 0.3);
+      letter-spacing: 1px;
     }
 
     /* FORM KẾT NỐI WIFI */
@@ -296,10 +305,12 @@
     <img src="images/callofduty.jpg" alt="Call of Duty">
   </div>
 
-  <!-- BỘ ĐẾM NGƯỢC 24 GIỜ -->
+  <!-- BỘ ĐẾM NGƯỢC & NGÀY THÁNG NĂM GIỜ -->
   <div class="timer-box">
     <div class="timer-title">⏱️ Thời gian truy cập còn lại:</div>
     <div class="timer-display" id="countdown">24:00:00</div>
+    <!-- Dòng hiển thị Ngày Tháng Năm Giờ Real-time -->
+    <div class="datetime-display" id="currentDateTime">📅 Đang tải thời gian...</div>
   </div>
 
   <!-- Form Đăng Nhập WiFi -->
@@ -387,13 +398,33 @@
   <script>
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqazkwI7UFW8NoS3shgEFkNUJc-c4dauNWrW3I5mHAsuXteYpVOJIzwvVymKyy8PJ8sQ/exec";
 
+    // --- SCRIPT HIỂN THỊ NGÀY THÁNG NĂM GIỜ REAL-TIME ---
+    function updateClock() {
+      const now = new Date();
+      const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+      const dayName = days[now.getDay()];
+
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      document.getElementById('currentDateTime').innerText = 
+        `🕒 ${dayName}, ${day}/${month}/${year} - ${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Chạy ngay lập tức
+
     // --- SCRIPT BỘ ĐẾM NGƯỢC 24 GIỜ ---
     const TOTAL_SECONDS = 24 * 60 * 60; // 24 Giờ = 86400 Giây
 
     function startTimer() {
       let endTime = localStorage.getItem('wifi_end_time');
       
-      // Nếu chưa có thời gian kết thúc hoặc đã hết hạn, đặt thời gian mới từ bây giờ + 24 giờ
       if (!endTime || Date.now() > parseInt(endTime)) {
         endTime = Date.now() + TOTAL_SECONDS * 1000;
         localStorage.setItem('wifi_end_time', endTime);
@@ -405,7 +436,7 @@
         if (remainingMs <= 0) {
           document.getElementById('countdown').innerText = "00:00:00";
           document.getElementById('countdown').style.color = "#ff4d4d";
-          localStorage.removeItem('wifi_end_time'); // Reset lại bộ đếm khi hết hạn
+          localStorage.removeItem('wifi_end_time');
           return;
         }
 
@@ -425,7 +456,6 @@
       setInterval(updateDisplay, 1000);
     }
 
-    // Chạy đồng hồ ngay khi load trang
     startTimer();
 
     // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP ---
@@ -451,7 +481,6 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Đang kết nối...";
 
-      // Đặt lại thời gian đếm ngược 24 tiếng mới khi bấm thành công
       const newEndTime = Date.now() + TOTAL_SECONDS * 1000;
       localStorage.setItem('wifi_end_time', newEndTime);
 
