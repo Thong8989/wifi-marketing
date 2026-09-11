@@ -35,7 +35,7 @@
       margin-top: 10px;
     }
 
-    /* BANNER GAME ĐỒNG BỘ NÓT KHUNG */
+    /* BANNER GAME ĐỒNG BỘ */
     .banner {
       display: flex;
       justify-content: center;
@@ -354,10 +354,11 @@
   </footer>
 
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylZqACKaYXvZ7luf8gCAKwFWtfrs7dZH7yOCFzzQewMvH5z-HnF04E4MpPb-LSsLd8Hg/exec";
+    // URL Web App Google Apps Script của bạn
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqazkwI7UFW8NoS3shgEFkNUJc-c4dauNWrW3I5mHAsuXteYpVOJIzwvVymKyy8PJ8sQ/exec";
 
     function handleFormSubmit(event) {
-      event.preventDefault(); // Ngăn trang reload
+      event.preventDefault(); // Ngăn trình duyệt reload lại trang
 
       const nameInput = document.getElementById('name');
       const ageInput = document.getElementById('age');
@@ -375,11 +376,11 @@
         return;
       }
 
-      // Khóa nút bấm
+      // Khóa nút gửi tránh bấm nhiều lần
       submitBtn.disabled = true;
       submitBtn.innerText = "Đang kết nối...";
 
-      // Gửi dữ liệu đi
+      // Gửi dữ liệu về Google Apps Script
       fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -396,7 +397,7 @@
         greetingEl.style.color = "#ffd700";
         greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi tốc độ cao 🎮⚡`;
         
-        // Reset nút bấm và form
+        // Reset form
         submitBtn.disabled = false;
         submitBtn.innerText = "TRUY CẬP INTERNET";
         nameInput.value = '';
