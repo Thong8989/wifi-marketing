@@ -544,7 +544,7 @@
 
     startTimer();
 
-    // --- SCRIPT ĐO TỐC ĐỘ MẠNG (SPEED TEST) ---
+    // --- SCRIPT ĐO TỐC ĐỘ MẠNG (SPEED TEST) - ĐÃ TỐI ƯU CHỐNG LỖI ---
     function runSpeedTest() {
       const resultEl = document.getElementById('speedResult');
       const btnTest = document.getElementById('btnTest');
@@ -554,17 +554,17 @@
       btnTest.disabled = true;
       btnTest.innerText = "Đang kiểm tra...";
 
-      const imageAddr = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Falken_Eifel_I.jpg?" + Math.random();
-      const startTime = new Date().getTime();
+      const imageAddr = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Falken_Eifel_I.jpg?t=" + Date.now();
+      const startTime = performance.now();
       const downloadSize = 730000; // Kích thước ước tính (bytes)
 
       const downloadImage = new Image();
       
       downloadImage.onload = function () {
-        const endTime = new Date().getTime();
+        const endTime = performance.now();
         const duration = (endTime - startTime) / 1000;
         
-        if (duration === 0) {
+        if (duration <= 0) {
           resultEl.innerText = "Mạng siêu tốc! 🚀";
           resetButton();
           return;
@@ -586,7 +586,7 @@
 
       downloadImage.onerror = function () {
         resultEl.style.color = "#ff4d4d";
-        resultEl.innerText = "Lỗi kết nối kiểm tra tốc độ!";
+        resultEl.innerText = "Lỗi: Kiểm tra lại kết nối hoặc tắt Trình chặn quảng cáo!";
         resetButton();
       };
 
