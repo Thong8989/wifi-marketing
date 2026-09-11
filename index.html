@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tạp Hóa Ya Thông - Đa Dịch Vụ & WiFi Gaming</title>
-  <!-- Font gaming từ Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <style>
+<style>
     body {
       font-family: 'Audiowide', 'Orbitron', sans-serif;
       background: radial-gradient(circle at top, #0a0a0a 0%, #000 100%);
@@ -31,27 +23,29 @@
       font-size: 20px;
       margin-top: 15px;
     }
+    
+    /* BANNER GAME ĐÃ SỬA ĐỒNG BỘ */
     .banner {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       margin: 30px auto;
       flex-wrap: wrap;
       padding: 0 20px;
     }
     .banner img {
-      width: 240px;
-      height: auto;
-      max-height: 180px;
-      object-fit: contain;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #00ff80;
+      width: 220px;
+      height: 140px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ff80;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .banner img:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 30px #ff0080;
+      box-shadow: 0 0 25px #ff0080;
     }
 
     /* FORM ĐĂNG NHẬP */
@@ -256,166 +250,3 @@
       font-weight: bold;
     }
   </style>
-</head>
-<body>
-
-  <header>
-    <h1>Tạp Hóa Ya Thông</h1>
-    <p>WiFi Max Tốc Độ – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
-  </header>
-
-  <!-- Banner Game -->
-  <div class="banner">
-    <img src="images/pubg.jpg" alt="PUBG">
-    <img src="images/fifa.jpg" alt="FIFA Online 4">
-    <img src="images/freefire.jpg" alt="Free Fire">
-    <img src="images/lienquan.jpg" alt="Liên Quân">
-    <img src="images/callofduty.jpg" alt="Call of Duty">
-  </div>
-
-  <!-- Form đăng nhập WiFi -->
-  <div class="container">
-    <h2>Kết Nối WiFi Miễn Phí</h2>
-    <form onsubmit="showGreeting(); return false;">
-      <label for="name">Tên của bạn:</label>
-      <input type="text" id="name" placeholder="Nhập tên" required>
-
-      <label for="age">Độ tuổi:</label>
-      <input type="number" id="age" placeholder="Nhập tuổi" min="1" max="100" required>
-
-      <label for="gender">Giới tính:</label>
-      <select id="gender" required>
-        <option value="">-- Chọn giới tính --</option>
-        <option value="Nam">Nam</option>
-        <option value="Nữ">Nữ</option>
-      </select>
-
-      <button type="submit">TRUY CẬP INTERNET</button>
-    </form>
-
-    <p id="greeting"></p>
-  </div>
-
-  <!-- PHẦN TỔNG HỢP TẤT CẢ DỊCH VỤ -->
-  <div class="services-wrapper">
-    <h2 class="services-title">🌟 DỊCH VỤ TẠI TẠP HÓA YA THÔNG 🌟</h2>
-    
-    <div class="services-grid">
-      <!-- Thẻ 1: Tạp hóa & Nạp Thẻ -->
-      <div class="service-card">
-        <h3>🛒 Tạp Hóa & Thẻ Game</h3>
-        <ul>
-          <li>🎮 <b>Thẻ Game:</b> Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...</li>
-          <li>📱 <b>Thẻ Điện Thoại:</b> Viettel, Vinaphone, Mobifone...</li>
-          <li>💡 <b>Hóa Đơn:</b> Điện, nước, internet, truyền hình.</li>
-          <li>🥤 <b>Bánh kẹo, nước giải khát</b> đa dạng phục vụ tại chỗ.</li>
-        </ul>
-      </div>
-
-      <!-- Thẻ 2: Photocopy & In Ấn -->
-      <div class="service-card">
-        <h3>🖨️ In Ấn & Photocopy</h3>
-        <ul>
-          <li>📄 <b>Photocopy / In tài liệu</b> giá rẻ, lấy ngay.</li>
-          <li>🔍 <b>Scan tài liệu, giấy tờ</b> chất lượng cao gửi Email/Zalo.</li>
-          <li>📑 <b>Ép dẻo, ép lụa</b> căn cước, giấy tờ xe.</li>
-        </ul>
-      </div>
-
-      <!-- Thẻ 3: Xe Cưới, Tour & Vận Tải -->
-      <div class="service-card">
-        <h3>🚗 Xe Dịch Vụ & Vận Tải</h3>
-        <ul>
-          <li>💒 <b>Xe cưới hỏi:</b> Đời mới, sang trọng, trang trí đẹp.</li>
-          <li>🏖️ <b>Tour du lịch:</b> Nhận hợp đồng tham quan, du lịch gia đình.</li>
-          <li>📦 <b>Vận tải hàng hóa:</b> Nhanh chóng, uy tín, giá hợp lý.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- PHẦN THANH TOÁN MOMO & VÍ TRẢ SAU -->
-  <div class="momo-section">
-    <h3>📱 Thanh Toán Nhanh Qua MoMo</h3>
-    <div class="badge-trasau">💳 CHẤP NHẬN VÍ TRẢ SAU MOMO</div>
-    
-    <div>
-      <div class="qr-box">
-        <img src="images/momo-qr.jpg" alt="Mã QR Thanh Toán MoMo">
-      </div>
-    </div>
-
-    <div class="momo-info">
-      <p>Số tài khoản MoMo: <span>0823611673</span></p>
-      <p>Chủ tài khoản: <span>Tạp Hóa Ya Thông</span></p>
-      <p><i>Thanh toán tiện lợi - Hỗ trợ Ví Trả Sau cho mọi dịch vụ!</i></p>
-    </div>
-
-    <a href="https://nhantien.momo.vn/0823611673" target="_blank" class="btn-momo">🚀 Mở Ví MoMo Chuyển Tiền</a>
-  </div>
-
-  <footer>
-    <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
-    <p>Tạp Hóa Ya Thông – Đồng hành cùng bạn trên mọi dịch vụ!</p>
-  </footer>
-
-  <script>
-    // Link API từ Google Apps Script của bạn
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylZqACKaYXvZ7luf8gCAKwFWtfrs7dZH7yOCFzzQewMvH5z-HnF04E4MpPb-LSsLd8Hg/exec";
-
-    function showGreeting() {
-      const nameInput = document.getElementById('name');
-      const ageInput = document.getElementById('age');
-      const genderInput = document.getElementById('gender');
-      
-      const name = nameInput.value.trim();
-      const age = ageInput.value.trim();
-      const gender = genderInput.value;
-      const greetingEl = document.getElementById('greeting');
-      const submitBtn = document.querySelector('.container button');
-
-      if (!name || !age || !gender) {
-        greetingEl.style.color = "#ff4d4d";
-        greetingEl.innerText = "Vui lòng nhập và chọn đầy đủ thông tin.";
-        return;
-      }
-
-      // Đổi trạng thái nút bấm tránh bấm nhiều lần
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Đang kết nối...";
-
-      // Gửi dữ liệu về Google Sheets
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: name,
-          age: age,
-          gender: gender
-        })
-      })
-      .then(() => {
-        greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi tốc độ cao tại Tạp Hóa Ya Thông 🎮⚡`;
-        submitBtn.disabled = false;
-        submitBtn.innerText = "TRUY CẬP INTERNET";
-        
-        // Reset form sau khi gửi
-        nameInput.value = '';
-        ageInput.value = '';
-        genderInput.value = '';
-      })
-      .catch(error => {
-        console.error('Lỗi gửi dữ liệu:', error);
-        greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name}! Kết nối WiFi thành công 🎮⚡`;
-        submitBtn.disabled = false;
-        submitBtn.innerText = "TRUY CẬP INTERNET";
-      });
-    }
-  </script>
-</body>
-</html>
