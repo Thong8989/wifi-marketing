@@ -60,6 +60,31 @@
       box-shadow: 0 0 25px #ff0080;
     }
 
+    /* BỘ ĐẾM NGƯỢC 24H */
+    .timer-box {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff80;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 320px;
+      box-shadow: 0 0 15px rgba(0, 255, 128, 0.4);
+    }
+    .timer-title {
+      font-size: 14px;
+      color: #00c3ff;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    .timer-display {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ff0080;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #ff0080;
+    }
+
     /* FORM KẾT NỐI WIFI */
     .container {
       background: rgba(25, 25, 25, 0.95);
@@ -271,6 +296,12 @@
     <img src="images/callofduty.jpg" alt="Call of Duty">
   </div>
 
+  <!-- BỘ ĐẾM NGƯỢC 24 GIỜ -->
+  <div class="timer-box">
+    <div class="timer-title">⏱️ Thời gian truy cập còn lại:</div>
+    <div class="timer-display" id="countdown">24:00:00</div>
+  </div>
+
   <!-- Form Đăng Nhập WiFi -->
   <div class="container">
     <h2>Kết Nối WiFi Miễn Phí</h2>
@@ -354,11 +385,52 @@
   </footer>
 
   <script>
-    // URL Web App Google Apps Script của bạn
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqazkwI7UFW8NoS3shgEFkNUJc-c4dauNWrW3I5mHAsuXteYpVOJIzwvVymKyy8PJ8sQ/exec";
 
+    // --- SCRIPT BỘ ĐẾM NGƯỢC 24 GIỜ ---
+    const TOTAL_SECONDS = 24 * 60 * 60; // 24 Giờ = 86400 Giây
+
+    function startTimer() {
+      let endTime = localStorage.getItem('wifi_end_time');
+      
+      // Nếu chưa có thời gian kết thúc hoặc đã hết hạn, đặt thời gian mới từ bây giờ + 24 giờ
+      if (!endTime || Date.now() > parseInt(endTime)) {
+        endTime = Date.now() + TOTAL_SECONDS * 1000;
+        localStorage.setItem('wifi_end_time', endTime);
+      }
+
+      function updateDisplay() {
+        const remainingMs = parseInt(endTime) - Date.now();
+
+        if (remainingMs <= 0) {
+          document.getElementById('countdown').innerText = "00:00:00";
+          document.getElementById('countdown').style.color = "#ff4d4d";
+          localStorage.removeItem('wifi_end_time'); // Reset lại bộ đếm khi hết hạn
+          return;
+        }
+
+        const totalSec = Math.floor(remainingMs / 1000);
+        const hours = Math.floor(totalSec / 3600);
+        const minutes = Math.floor((totalSec % 3600) / 60);
+        const seconds = totalSec % 60;
+
+        const hStr = String(hours).padStart(2, '0');
+        const mStr = String(minutes).padStart(2, '0');
+        const sStr = String(seconds).padStart(2, '0');
+
+        document.getElementById('countdown').innerText = `${hStr}:${mStr}:${sStr}`;
+      }
+
+      updateDisplay();
+      setInterval(updateDisplay, 1000);
+    }
+
+    // Chạy đồng hồ ngay khi load trang
+    startTimer();
+
+    // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP ---
     function handleFormSubmit(event) {
-      event.preventDefault(); // Ngăn trình duyệt reload lại trang
+      event.preventDefault();
 
       const nameInput = document.getElementById('name');
       const ageInput = document.getElementById('age');
@@ -376,11 +448,13 @@
         return;
       }
 
-      // Khóa nút gửi tránh bấm nhiều lần
       submitBtn.disabled = true;
       submitBtn.innerText = "Đang kết nối...";
 
-      // Gửi dữ liệu về Google Apps Script
+      // Đặt lại thời gian đếm ngược 24 tiếng mới khi bấm thành công
+      const newEndTime = Date.now() + TOTAL_SECONDS * 1000;
+      localStorage.setItem('wifi_end_time', newEndTime);
+
       fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -395,9 +469,8 @@
       })
       .then(() => {
         greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi tốc độ cao 🎮⚡`;
+        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi 24h tốc độ cao 🎮⚡`;
         
-        // Reset form
         submitBtn.disabled = false;
         submitBtn.innerText = "TRUY CẬP INTERNET";
         nameInput.value = '';
@@ -407,7 +480,7 @@
       .catch(err => {
         console.error("Lỗi:", err);
         greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name}! Đã kết nối WiFi 🎮⚡`;
+        greetingEl.innerText = `Xin chào ${name}! Đã kết nối WiFi 24h 🎮⚡`;
         submitBtn.disabled = false;
         submitBtn.innerText = "TRUY CẬP INTERNET";
       });
