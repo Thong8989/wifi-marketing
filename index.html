@@ -338,7 +338,7 @@
     <div class="datetime-display" id="currentDateTime">📅 Đang tải thời gian...</div>
   </div>
 
-  <!-- Form Đăng Nhập WiFi (Đã bỏ chọn thẻ) -->
+  <!-- Form Đăng Nhập WiFi -->
   <div class="container">
     <h2>Kết Nối WiFi Miễn Phí</h2>
     <form onsubmit="handleFormSubmit(event)">
@@ -373,7 +373,7 @@
     <button type="button" id="btnTest" onclick="runSpeedTest()" style="background: linear-gradient(90deg, #00c3ff, #00ff80);">BẮT ĐẦU ĐO TỐC ĐỘ</button>
   </div>
 
-  <!-- Khai Thác Quảng Cáo Dịch Vụ (Đã đưa phần Thẻ Cào / Thẻ Game xuống đây) -->
+  <!-- Khai Thác Quảng Cáo Dịch Vụ -->
   <div class="services-wrapper">
     <h2 class="services-title">🌟 DỊCH VỤ TẠI TẠP HÓA YA THÔNG 🌟</h2>
     
@@ -387,7 +387,6 @@
           <li>🥤 <b>Nước giải khát, bánh kẹo</b> đa dạng phục vụ tại chỗ.</li>
         </ul>
 
-        <!-- Lưới hiển thị các loại thẻ cào/game tích hợp -->
         <div class="service-card-grid">
           <div class="service-card-item">
             <img src="images/viettel-card.jpg" alt="Viettel">
@@ -480,7 +479,7 @@
       <p>Chủ tài khoản: <span>Tạp Hóa Ya Thông</span></p>
     </div>
 
-    <a href="https://nhantien.momo.vn/0823611673" target="_blank" class="btn-momo">🚀 Mở Ví MoMo Chuyển Tiền</a>
+    <a href="https://nhantien.momo.vn/0823611673" target="_blank" rel="noopener noreferrer" class="btn-momo">🚀 Mở Ví MoMo Chuyển Tiền</a>
   </div>
 
   <!-- Banner Game -->
@@ -495,7 +494,7 @@
   <!-- Footer -->
   <footer>
     <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
-    <p>💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
+    <p>💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" rel="noopener noreferrer" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
     <p>Tạp Hóa Ya Thông – Phục vụ tận tâm!</p>
   </footer>
 
@@ -613,7 +612,7 @@
       }
     }
 
-    // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP (Đã bỏ dữ liệu cardType) ---
+    // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP ---
     function handleFormSubmit(event) {
       event.preventDefault();
 
