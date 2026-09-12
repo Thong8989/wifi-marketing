@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" id="htmlRoot">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,38 @@
       margin: 0;
       padding: 0;
     }
+
+    /* NÚT CHUYỂN ĐỔI NGÔN NGỮ */
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 5px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 4px;
+      border-radius: 20px;
+      border: 1px solid #00ff80;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #aaa;
+      padding: 6px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .lang-btn.active {
+      background: #00ff80;
+      color: #000;
+      box-shadow: 0 0 10px #00ff80;
+    }
+
     header {
+      position: relative;
       text-align: center;
       padding: 40px 20px;
       background: linear-gradient(90deg, #ff0080, #00ff80, #00c3ff);
@@ -308,7 +339,7 @@
       margin-top: 10px;
     }
 
-    /* PHẦN CẢNH BÁO & BẢN QUYỀN */
+    /* PHẦN CẢNH BÁO & ĐIỀU KHOẢN */
     .disclaimer-section {
       max-width: 1050px;
       margin: 40px auto;
@@ -368,35 +399,41 @@
 <body>
 
   <header>
-    <h1>Tạp Hóa Ya Thông</h1>
-    <p>WiFi Free Max Tốc Độ – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
+    <!-- Nút chọn ngôn ngữ -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btnVi" onclick="setLanguage('vi')">VI</button>
+      <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
+    </div>
+
+    <h1 data-key="mainTitle">Tạp Hóa Ya Thông</h1>
+    <p data-key="mainSubtitle">WiFi Miễn Phí Tốc Độ Cao – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
   </header>
 
   <!-- BỘ ĐẾM NGƯỢC & NGÀY THÁNG NĂM GIỜ -->
   <div class="timer-box">
-    <div class="timer-title">⏱️ Thời gian truy cập còn lại:</div>
+    <div class="timer-title" data-key="timerTitle">⏱️ Thời gian truy cập còn lại:</div>
     <div class="timer-display" id="countdown">24:00:00</div>
     <div class="datetime-display" id="currentDateTime">📅 Đang tải thời gian...</div>
   </div>
 
   <!-- Form Đăng Nhập WiFi -->
   <div class="container">
-    <h2>Kết Nối WiFi Miễn Phí</h2>
+    <h2 data-key="wifiFormTitle">Kết Nối WiFi Miễn Phí</h2>
     <form onsubmit="handleFormSubmit(event)">
-      <label for="name">Tên của bạn:</label>
-      <input type="text" id="name" placeholder="Nhập tên..." required>
+      <label for="name" data-key="labelName">Tên của bạn:</label>
+      <input type="text" id="name" data-placeholder="placeholderName" placeholder="Nhập tên..." required>
 
-      <label for="age">Độ tuổi:</label>
-      <input type="number" id="age" placeholder="Nhập tuổi..." min="1" max="100" required>
+      <label for="age" data-key="labelAge">Độ tuổi:</label>
+      <input type="number" id="age" data-placeholder="placeholderAge" placeholder="Nhập tuổi..." min="1" max="100" required>
 
-      <label for="gender">Giới tính:</label>
+      <label for="gender" data-key="labelGender">Giới tính:</label>
       <select id="gender" required>
-        <option value="">-- Chọn giới tính --</option>
-        <option value="Nam">Nam</option>
-        <option value="Nữ">Nữ</option>
+        <option value="" data-key="optDefault">-- Chọn giới tính --</option>
+        <option value="Nam" data-key="optMale">Nam</option>
+        <option value="Nữ" data-key="optFemale">Nữ</option>
       </select>
 
-      <button type="submit" id="btnSubmit">TRUY CẬP INTERNET</button>
+      <button type="submit" id="btnSubmit" data-key="btnConnect">TRUY CẬP INTERNET</button>
     </form>
 
     <p id="greeting"></p>
@@ -404,28 +441,28 @@
 
   <!-- KHU VỰC ĐO TỐC ĐỘ MẠNG (SPEED TEST) -->
   <div class="container speed-section">
-    <h2>⚡ Kiểm Tra Tốc Độ WiFi</h2>
-    <p style="text-align: center; color: #aaa; font-size: 14px; margin-bottom: 15px;">Kiểm tra độ mượt của mạng Tạp Hóa Ya Thông!</p>
+    <h2 data-key="speedTitle">⚡ Kiểm Tra Tốc Độ WiFi</h2>
+    <p data-key="speedDesc" style="text-align: center; color: #aaa; font-size: 14px; margin-bottom: 15px;">Kiểm tra độ mượt của mạng Tạp Hóa Ya Thông!</p>
     
-    <div id="speedResult" style="text-align: center; font-size: 22px; color: #00ff80; font-weight: bold; margin: 15px 0;">
+    <div id="speedResult" data-key="speedReady" style="text-align: center; font-size: 22px; color: #00ff80; font-weight: bold; margin: 15px 0;">
       Sẵn sàng kiểm tra
     </div>
 
-    <button type="button" id="btnTest" onclick="runSpeedTest()" style="background: linear-gradient(90deg, #00c3ff, #00ff80);">BẮT ĐẦU ĐO TỐC ĐỘ</button>
+    <button type="button" id="btnTest" onclick="runSpeedTest()" data-key="btnSpeedTest" style="background: linear-gradient(90deg, #00c3ff, #00ff80);">BẮT ĐẦU ĐO TỐC ĐỘ</button>
   </div>
 
   <!-- Khai Thác Quảng Cáo Dịch Vụ -->
   <div class="services-wrapper">
-    <h2 class="services-title">🌟 DỊCH VỤ TẠI TẠP HÓA YA THÔNG 🌟</h2>
+    <h2 class="services-title" data-key="servicesHeader">🌟 DỊCH VỤ TẠI TẠP HÓA YA THÔNG 🌟</h2>
     
     <div class="services-grid">
       <div class="service-card">
-        <h3>🛒 Tạp Hóa & Thẻ Game</h3>
+        <h3 data-key="serv1Title">🛒 Tạp Hóa & Thẻ Game</h3>
         <ul>
-          <li>🎮 <b>Thẻ Game:</b> Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...</li>
-          <li>📱 <b>Thẻ Điện Thoại:</b> Viettel, Vinaphone, Mobifone...</li>
-          <li>💡 <b>Hóa Đơn:</b> Điện, nước, internet, truyền hình.</li>
-          <li>🥤 <b>Nước giải khát, bánh kẹo</b> đa dạng phục vụ tại chỗ.</li>
+          <li data-key="serv1_1">🎮 <b>Thẻ Game:</b> Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...</li>
+          <li data-key="serv1_2">📱 <b>Thẻ Điện Thoại:</b> Viettel, Vinaphone, Mobifone...</li>
+          <li data-key="serv1_3">💡 <b>Hóa Đơn:</b> Điện, nước, internet, truyền hình.</li>
+          <li data-key="serv1_4">🥤 <b>Nước giải khát, bánh kẹo</b> đa dạng phục vụ tại chỗ.</li>
         </ul>
 
         <div class="service-card-grid">
@@ -453,20 +490,20 @@
       </div>
 
       <div class="service-card">
-        <h3>🖨️ In Ấn & Photocopy</h3>
+        <h3 data-key="serv2Title">🖨️ In Ấn & Photocopy</h3>
         <ul>
-          <li>📄 <b>Photocopy / In tài liệu</b> giá rẻ, lấy ngay.</li>
-          <li>🔍 <b>Scan tài liệu, giấy tờ</b> gửi Email/Zalo.</li>
-          <li>📑 <b>Ép dẻo, ép lụa</b> Căn cước, Giấy tờ xe.</li>
+          <li data-key="serv2_1">📄 <b>Photocopy / In tài liệu</b> giá rẻ, lấy ngay.</li>
+          <li data-key="serv2_2">🔍 <b>Scan tài liệu, giấy tờ</b> gửi Email/Zalo.</li>
+          <li data-key="serv2_3">📑 <b>Ép dẻo, ép lụa</b> Căn cước, Giấy tờ xe.</li>
         </ul>
       </div>
 
       <div class="service-card">
-        <h3>🚗 Xe Dịch Vụ & Vận Tải</h3>
+        <h3 data-key="serv3Title">🚗 Xe Dịch Vụ & Vận Tải</h3>
         <ul>
-          <li>💒 <b>Xe cưới hỏi:</b> Xe đời mới, trang trí đẹp.</li>
-          <li>🏖️ <b>Tour du lịch:</b> Hợp đồng tham quan, du lịch gia đình.</li>
-          <li>📦 <b>Vận tải hàng hóa:</b> Nhanh chóng, uy tín.</li>
+          <li data-key="serv3_1">💒 <b>Xe cưới hỏi:</b> Xe đời mới, trang trí đẹp.</li>
+          <li data-key="serv3_2">🏖️ <b>Tour du lịch:</b> Hợp đồng tham quan, du lịch gia đình.</li>
+          <li data-key="serv3_3">📦 <b>Vận tải hàng hóa:</b> Nhanh chóng, uy tín.</li>
         </ul>
       </div>
     </div>
@@ -474,31 +511,31 @@
 
   <!-- KHU VỰC GIỚI THIỆU CÔNG NGHỆ WIFI ARUBA 345 -->
   <div class="container" style="max-width: 1050px; width: 90%; background: linear-gradient(145deg, #0d1a26 0%, #050a0f 100%); border: 2px solid #00c3ff; box-shadow: 0 0 25px rgba(0, 195, 255, 0.4);">
-    <h2 style="color: #00c3ff; text-align: center; text-transform: uppercase; letter-spacing: 2px;">🌐 Hạ Tầng WiFi Gaming Đỉnh Cao</h2>
-    <p style="text-align: center; color: #ffd700; font-size: 15px; margin-bottom: 20px;">
+    <h2 data-key="arubaTitle" style="color: #00c3ff; text-align: center; text-transform: uppercase; letter-spacing: 2px;">🌐 Hạ Tầng WiFi Gaming Đỉnh Cao</h2>
+    <p data-key="arubaDesc" style="text-align: center; color: #ffd700; font-size: 15px; margin-bottom: 20px;">
       Trang bị hệ thống phát sóng chuyên dụng doanh nghiệp <b>Aruba AP-345 Wave 2</b> kết hợp đường truyền tốc độ cao đối xứng <b>500 Mbps (Up/Down)</b>:
     </p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: center;">
       <div style="text-align: center;">
         <img src="images/aruba-345.jpg" alt="Aruba AP-345" style="width: 100%; max-width: 300px; height: 180px; object-fit: cover; border-radius: 12px; border: 2px solid #00ff80; box-shadow: 0 0 15px rgba(0, 255, 128, 0.4);">
-        <p style="color: #aaa; font-size: 13px; margin-top: 8px;">Thiết bị Aruba AP-345 chuẩn doanh nghiệp tại quán</p>
+        <p data-key="arubaImgSub" style="color: #aaa; font-size: 13px; margin-top: 8px;">Thiết bị Aruba AP-345 chuẩn doanh nghiệp tại quán</p>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <div style="background: rgba(0,0,0,0.6); padding: 12px; border-radius: 10px; border-left: 4px solid #00ff80;">
-          <h4 style="color: #00ff80; margin: 0 0 4px 0;">⚡ Chống Giật Lag / Ping Thấp</h4>
-          <p style="color: #ccc; font-size: 13px; margin: 0;">Công nghệ <i>Airtime Fairness</i> giúp chia đều băng thông, loại bỏ hiện tượng nhảy ping.</p>
+          <h4 data-key="feat1Title" style="color: #00ff80; margin: 0 0 4px 0;">⚡ Chống Giật Lag / Ping Thấp</h4>
+          <p data-key="feat1Desc" style="color: #ccc; font-size: 13px; margin: 0;">Công nghệ <i>Airtime Fairness</i> giúp chia đều băng thông, loại bỏ hiện tượng nhảy ping.</p>
         </div>
 
         <div style="background: rgba(0,0,0,0.6); padding: 12px; border-radius: 10px; border-left: 4px solid #ff0080;">
-          <h4 style="color: #ff0080; margin: 0 0 4px 0;">🚀 Băng Tần Kép 5GHz Sạch Sẽ</h4>
-          <p style="color: #ccc; font-size: 13px; margin: 0;">Tự động điều hướng thiết bị sang băng tần 5GHz tốc độ cao, không lo nhiễu sóng.</p>
+          <h4 data-key="feat2Title" style="color: #ff0080; margin: 0 0 4px 0;">🚀 Băng Tần Kép 5GHz Sạch Sẽ</h4>
+          <p data-key="feat2Desc" style="color: #ccc; font-size: 13px; margin: 0;">Tự động điều hướng thiết bị sang băng tần 5GHz tốc độ cao, không lo nhiễu sóng.</p>
         </div>
 
         <div style="background: rgba(0,0,0,0.6); padding: 12px; border-radius: 10px; border-left: 4px solid #00c3ff;">
-          <h4 style="color: #00c3ff; margin: 0 0 4px 0;">🎮 Chiến Game Mượt Mà 24/7</h4>
-          <p style="color: #ccc; font-size: 13px; margin: 0;">Thoải mái chiến Liên Quân, PUBG, Free Fire, FIFA... với độ trễ tối ưu nhất.</p>
+          <h4 data-key="feat3Title" style="color: #00c3ff; margin: 0 0 4px 0;">🎮 Chiến Game Mượt Mà 24/7</h4>
+          <p data-key="feat3Desc" style="color: #ccc; font-size: 13px; margin: 0;">Thoải mái chiến Liên Quân, PUBG, Free Fire, FIFA... với độ trễ tối ưu nhất.</p>
         </div>
       </div>
     </div>
@@ -506,8 +543,8 @@
 
   <!-- Thanh Toán MoMo -->
   <div class="momo-section">
-    <h3>📱 Thanh Toán Nhanh Qua MoMo</h3>
-    <div class="badge-trasau">💳 CHẤP NHẬN VÍ TRẢ SAU MOMO</div>
+    <h3 data-key="momoTitle">📱 Thanh Toán Nhanh Qua MoMo</h3>
+    <div class="badge-trasau" data-key="momoBadge">💳 CHẤP NHẬN VÍ TRẢ SAU MOMO</div>
     
     <div>
       <div class="qr-box">
@@ -516,11 +553,11 @@
     </div>
 
     <div class="momo-info">
-      <p>Số MoMo: <span>0823611673</span></p>
-      <p>Chủ tài khoản: <span>Tạp Hóa Ya Thông</span></p>
+      <p><span data-key="momoPhoneText">Số MoMo:</span> <span>0823611673</span></p>
+      <p><span data-key="momoOwnerText">Chủ tài khoản:</span> <span>Tạp Hóa Ya Thông</span></p>
     </div>
 
-    <a href="https://nhantien.momo.vn/0823611673" target="_blank" rel="noopener noreferrer" class="btn-momo">🚀 Mở Ví MoMo Chuyển Tiền</a>
+    <a href="https://nhantien.momo.vn/0823611673" target="_blank" rel="noopener noreferrer" class="btn-momo" data-key="btnMomo">🚀 Mở Ví MoMo Chuyển Tiền</a>
   </div>
 
   <!-- Banner Game -->
@@ -532,31 +569,182 @@
     <img src="images/callofduty.jpg" alt="Call of Duty">
   </div>
 
-  <!-- PHẦN CẢNH BÁO & ĐIỀU KHOẢN SỬ DỤNG (DISCLAIMER) -->
+  <!-- PHẦN CẢNH BÁO & ĐIỀU KHOẢN -->
   <div class="disclaimer-section">
-    <h3>⚠️ Cảnh Báo & Điều Khoản Sử Dụng WiFi</h3>
-    <p>Khi truy cập và sử dụng hệ thống mạng Internet tại <b>Tạp Hóa Ya Thông</b>, người dùng vui lòng lưu ý các điều khoản sau:</p>
+    <h3 data-key="discTitle">⚠️ Cảnh Báo & Điều Khoản Sử Dụng WiFi</h3>
+    <p data-key="discIntro">Khi truy cập và sử dụng hệ thống mạng Internet tại <b>Tạp Hóa Ya Thông</b>, người dùng vui lòng lưu ý các điều khoản sau:</p>
     <ul>
-      <li><b>Trách nhiệm pháp lý:</b> Nghiêm cấm sử dụng hệ thống mạng của quán để thực hiện các hành vi vi phạm pháp luật nhà nước (truy cập nội dung đồi trụy, phát tán thông tin sai lệch, tấn công mạng, hack, lừa đảo trực tuyến...). Mọi hành vi vi phạm cá nhân phải hoàn toàn chịu trách nhiệm trước pháp luật.</li>
-      <li><b>Bảo mật thông tin:</b> Chúng tôi thu thập thông tin cơ bản (Tên, tuổi, giới tính) nhằm mục đích quản lý kết nối và nâng cao chất lượng dịch vụ. Chúng tôi cam kết bảo mật thông tin cá nhân và không chia sẻ cho bên thứ ba trái phép.</li>
-      <li><b>An toàn trực tuyến:</b> Khách hàng tự chịu trách nhiệm bảo mật thông tin tài khoản ngân hàng, mật khẩu game và dữ liệu cá nhân khi sử dụng mạng công cộng.</li>
+      <li><span data-key="disc1"><b>Trách nhiệm pháp lý:</b> Nghiêm cấm sử dụng hệ thống mạng của quán để thực hiện các hành vi vi phạm pháp luật nhà nước (truy cập nội dung đồi trụy, phát tán thông tin sai lệch, tấn công mạng, hack, lừa đảo trực tuyến...). Mọi hành vi vi phạm cá nhân phải hoàn toàn chịu trách nhiệm trước pháp luật.</span></li>
+      <li><span data-key="disc2"><b>Bảo mật thông tin:</b> Chúng tôi thu thập thông tin cơ bản (Tên, tuổi, giới tính) nhằm mục đích quản lý kết nối và nâng cao chất lượng dịch vụ. Chúng tôi cam kết bảo mật thông tin cá nhân và không chia sẻ cho bên thứ ba trái phép.</span></li>
+      <li><span data-key="disc3"><b>An toàn trực tuyến:</b> Khách hàng tự chịu trách nhiệm bảo mật thông tin tài khoản ngân hàng, mật khẩu game và dữ liệu cá nhân khi sử dụng mạng công cộng.</span></li>
     </ul>
   </div>
 
   <!-- Footer & Bản Quyền -->
   <footer>
     <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
-    <p>💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" rel="noopener noreferrer" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
-    <p>Tạp Hóa Ya Thông – Phục vụ tận tâm!</p>
+    <p data-key="fbText">💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" rel="noopener noreferrer" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
+    <p data-key="footerSlogan">Tạp Hóa Ya Thông – Phục vụ tận tâm!</p>
     
     <div class="copyright">
-      © <span id="currentYear"></span> <strong>Tạp Hóa Ya Thông</strong>. All Rights Reserved.<br>
-      Designed & Maintained by <strong>Ya Thông</strong> (KRĂ JẴN YA THÔNG).
+      © <span id="currentYear"></span> <strong>Tạp Hóa Ya Thông</strong>. <span data-key="rightsText">Bảo lưu mọi quyền</span>.<br>
+      <span data-key="designerText">Thiết kế & Vận hành bởi</span> <strong>Ya Thông (KRĂ JẴN YA THÔNG)</strong>.
     </div>
   </footer>
 
   <script>
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqazkwI7UFW8NoS3shgEFkNUJc-c4dauNWrW3I5mHAsuXteYpVOJIzwvVymKyy8PJ8sQ/exec";
+
+    // --- BỘ TỪ ĐIỂN ĐA NGÔN NGỮ (VI / EN) ---
+    const dict = {
+      vi: {
+        mainTitle: "Tạp Hóa Ya Thông",
+        mainSubtitle: "WiFi Miễn Phí Tốc Độ Cao – Đa Dịch Vụ Phục Vụ 🚀🎮",
+        timerTitle: "⏱️ Thời gian truy cập còn lại:",
+        wifiFormTitle: "Kết Nối WiFi Miễn Phí",
+        labelName: "Tên của bạn:",
+        placeholderName: "Nhập tên...",
+        labelAge: "Độ tuổi:",
+        placeholderAge: "Nhập tuổi...",
+        labelGender: "Giới tính:",
+        optDefault: "-- Chọn giới tính --",
+        optMale: "Nam",
+        optFemale: "Nữ",
+        btnConnect: "TRUY CẬP INTERNET",
+        speedTitle: "⚡ Kiểm Tra Tốc Độ WiFi",
+        speedDesc: "Kiểm tra độ mượt của mạng Tạp Hóa Ya Thông!",
+        speedReady: "Sẵn sàng kiểm tra",
+        btnSpeedTest: "BẮT ĐẦU ĐO TỐC ĐỘ",
+        servicesHeader: "🌟 DỊCH VỤ TẠI TẠP HÓA YA THÔNG 🌟",
+        serv1Title: "🛒 Tạp Hóa & Thẻ Game",
+        serv1_1: "🎮 <b>Thẻ Game:</b> Garena, Zing, PUBG, FIFA, Free Fire, Liên Quân...",
+        serv1_2: "📱 <b>Thẻ Điện Thoại:</b> Viettel, Vinaphone, Mobifone...",
+        serv1_3: "💡 <b>Hóa Đơn:</b> Điện, nước, internet, truyền hình.",
+        serv1_4: "🥤 <b>Nước giải khát, bánh kẹo</b> đa dạng phục vụ tại chỗ.",
+        serv2Title: "🖨️ In Ấn & Photocopy",
+        serv2_1: "📄 <b>Photocopy / In tài liệu</b> giá rẻ, lấy ngay.",
+        serv2_2: "🔍 <b>Scan tài liệu, giấy tờ</b> gửi Email/Zalo.",
+        serv2_3: "📑 <b>Ép dẻo, ép lụa</b> Căn cước, Giấy tờ xe.",
+        serv3Title: "🚗 Xe Dịch Vụ & Vận Tải",
+        serv3_1: "💒 <b>Xe cưới hỏi:</b> Xe đời mới, trang trí đẹp.",
+        serv3_2: "🏖️ <b>Tour du lịch:</b> Hợp đồng tham quan, du lịch gia đình.",
+        serv3_3: "📦 <b>Vận tải hàng hóa:</b> Nhanh chóng, uy tín.",
+        arubaTitle: "🌐 Hạ Tầng WiFi Gaming Đỉnh Cao",
+        arubaDesc: "Trang bị hệ thống phát sóng chuyên dụng doanh nghiệp <b>Aruba AP-345 Wave 2</b> kết hợp đường truyền tốc độ cao đối xứng <b>500 Mbps (Up/Down)</b>:",
+        arubaImgSub: "Thiết bị Aruba AP-345 chuẩn doanh nghiệp tại quán",
+        feat1Title: "⚡ Chống Giật Lag / Ping Thấp",
+        feat1Desc: "Công nghệ <i>Airtime Fairness</i> giúp chia đều băng thông, loại bỏ hiện tượng nhảy ping.",
+        feat2Title: "🚀 Băng Tần Kép 5GHz Sạch Sẽ",
+        feat2Desc: "Tự động điều hướng thiết bị sang băng tần 5GHz tốc độ cao, không lo nhiễu sóng.",
+        feat3Title: "🎮 Chiến Game Mượt Mà 24/7",
+        feat3Desc: "Thoải mái chiến Liên Quân, PUBG, Free Fire, FIFA... với độ trễ tối ưu nhất.",
+        momoTitle: "📱 Thanh Toán Nhanh Qua MoMo",
+        momoBadge: "💳 CHẤP NHẬN VÍ TRẢ SAU MOMO",
+        momoPhoneText: "Số MoMo:",
+        momoOwnerText: "Chủ tài khoản:",
+        btnMomo: "🚀 Mở Ví MoMo Chuyển Tiền",
+        discTitle: "⚠️ Cảnh Báo & Điều Khoản Sử Dụng WiFi",
+        discIntro: "Khi truy cập và sử dụng hệ thống mạng Internet tại <b>Tạp Hóa Ya Thông</b>, người dùng vui lòng lưu ý các điều khoản sau:",
+        disc1: "<b>Trách nhiệm pháp lý:</b> Nghiêm cấm sử dụng hệ thống mạng của quán để thực hiện các hành vi vi phạm pháp luật nhà nước (truy cập nội dung đồi trụy, phát tán thông tin sai lệch, tấn công mạng, hack, lừa đảo trực tuyến...). Mọi hành vi vi phạm cá nhân phải hoàn toàn chịu trách nhiệm trước pháp luật.",
+        disc2: "<b>Bảo mật thông tin:</b> Chúng tôi thu thập thông tin cơ bản (Tên, tuổi, giới tính) nhằm mục đích quản lý kết nối và nâng cao chất lượng dịch vụ. Chúng tôi cam kết bảo mật thông tin cá nhân và không chia sẻ cho bên thứ ba trái phép.",
+        disc3: "<b>An toàn trực tuyến:</b> Khách hàng tự chịu trách nhiệm bảo mật thông tin tài khoản ngân hàng, mật khẩu game và dữ liệu cá nhân khi sử dụng mạng công cộng.",
+        fbText: "💬 Facebook Cá Nhân: <a href='https://www.facebook.com/thong.ya.52' target='_blank' rel='noopener noreferrer' style='color: #00c3ff; text-decoration: none; font-weight: bold;'>Ya Thông (Kết nối ngay)</a>",
+        footerSlogan: "Tạp Hóa Ya Thông – Phục vụ tận tâm!",
+        rightsText: "Bảo lưu mọi quyền",
+        designerText: "Thiết kế & Vận hành bởi"
+      },
+      en: {
+        mainTitle: "Ya Thong Grocery",
+        mainSubtitle: "High-Speed Free WiFi – Multi-Services Store 🚀🎮",
+        timerTitle: "⏱️ Remaining Access Time:",
+        wifiFormTitle: "Free WiFi Connection",
+        labelName: "Your Name:",
+        placeholderName: "Enter name...",
+        labelAge: "Your Age:",
+        placeholderAge: "Enter age...",
+        labelGender: "Gender:",
+        optDefault: "-- Select gender --",
+        optMale: "Male",
+        optFemale: "Female",
+        btnConnect: "ACCESS INTERNET",
+        speedTitle: "⚡ WiFi Speed Test",
+        speedDesc: "Test the smoothness of Ya Thong Grocery's network!",
+        speedReady: "Ready to test",
+        btnSpeedTest: "START SPEED TEST",
+        servicesHeader: "🌟 SERVICES AT YA THONG GROCERY 🌟",
+        serv1Title: "🛒 Grocery & Game Cards",
+        serv1_1: "🎮 <b>Game Cards:</b> Garena, Zing, PUBG, FIFA, Free Fire, Arena of Valor...",
+        serv1_2: "📱 <b>Phone Cards:</b> Viettel, Vinaphone, Mobifone...",
+        serv1_3: "💡 <b>Bills:</b> Electricity, water, internet, television.",
+        serv1_4: "🥤 <b>Soft drinks & snacks</b> available on-site.",
+        serv2Title: "🖨️ Printing & Photocopy",
+        serv2_1: "📄 <b>Photocopy / Document printing</b> affordable & instant.",
+        serv2_2: "🔍 <b>Document scanning</b> sent via Email/Zalo.",
+        serv2_3: "📑 <b>Lamination</b> for ID cards and vehicle papers.",
+        serv3Title: "🚗 Transport & Car Rental",
+        serv3_1: "💒 <b>Wedding cars:</b> Modern models, beautifully decorated.",
+        serv3_2: "🏖️ <b>Tour services:</b> Sightseeing and family travel contracts.",
+        serv3_3: "📦 <b>Cargo transport:</b> Fast and reliable.",
+        arubaTitle: "🌐 Ultimate Gaming WiFi Infrastructure",
+        arubaDesc: "Equipped with enterprise-grade <b>Aruba AP-345 Wave 2</b> access points combined with symmetric high-speed <b>500 Mbps (Up/Down)</b> bandwidth:",
+        arubaImgSub: "Enterprise Aruba AP-345 device at the store",
+        feat1Title: "⚡ Anti-Lag / Low Ping",
+        feat1Desc: "<i>Airtime Fairness</i> technology distributes bandwidth evenly, eliminating ping spikes.",
+        feat2Title: "🚀 Clean Dual-Band 5GHz",
+        feat2Desc: "Automatically steers devices to the high-speed 5GHz band without signal interference.",
+        feat3Title: "🎮 Smooth Gaming 24/7",
+        feat3Desc: "Enjoy Arena of Valor, PUBG, Free Fire, FIFA... with optimized low latency.",
+        momoTitle: "📱 Fast Payment via MoMo",
+        momoBadge: "💳 MOMO LATER PAY ACCEPTED",
+        momoPhoneText: "MoMo Number:",
+        momoOwnerText: "Account Name:",
+        btnMomo: "🚀 Open MoMo to Transfer",
+        discTitle: "⚠️ WiFi Terms & Warnings",
+        discIntro: "When accessing and using the Internet network at <b>Ya Thong Grocery</b>, users please note the following terms:",
+        disc1: "<b>Legal Responsibility:</b> Strictly prohibit using the store's network for state law violations (accessing adult content, spreading false info, cyberattacks, hacking, online fraud...). Individuals violating must take full legal responsibility.",
+        disc2: "<b>Information Security:</b> We collect basic information (Name, age, gender) to manage connections and improve service quality. We commit to keeping personal data secure and will not share it unlawfully.",
+        disc3: "<b>Online Safety:</b> Customers are responsible for securing their bank accounts, game passwords, and personal data when using public networks.",
+        fbText: "💬 Personal Facebook: <a href='https://www.facebook.com/thong.ya.52' target='_blank' rel='noopener noreferrer' style='color: #00c3ff; text-decoration: none; font-weight: bold;'>Ya Thông (Connect now)</a>",
+        footerSlogan: "Ya Thong Grocery – Dedicated Service!",
+        rightsText: "All Rights Reserved",
+        designerText: "Designed & Maintained by"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.getElementById('htmlRoot').setAttribute('lang', lang);
+      
+      // Đổi trạng thái active nút bấm
+      document.getElementById('btnVi').classList.toggle('active', lang === 'vi');
+      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+
+      // Cập nhật text cho các thẻ có data-key
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (dict[lang][key]) {
+          el.innerHTML = dict[lang][key];
+        }
+      });
+
+      // Cập nhật placeholder cho input
+      const inputs = document.querySelectorAll('[data-placeholder]');
+      inputs.forEach(input => {
+        const pKey = input.getAttribute('data-placeholder');
+        if (dict[lang][pKey]) {
+          input.placeholder = dict[lang][pKey];
+        }
+      });
+
+      // Lưu lựa chọn ngôn ngữ của người dùng vào localStorage
+      localStorage.setItem('preferred_lang', lang);
+    }
+
+    // Tự động khôi phục ngôn ngữ đã chọn trước đó (nếu có)
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferred_lang') || 'vi';
+      setLanguage(savedLang);
+    });
 
     // --- TỰ ĐỘNG CẬP NHẬT NĂM BẢN QUYỀN ---
     document.getElementById('currentYear').innerText = new Date().getFullYear();
@@ -564,8 +752,16 @@
     // --- SCRIPT HIỂN THỊ NGÀY THÁNG NĂM GIỜ REAL-TIME ---
     function updateClock() {
       const now = new Date();
-      const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-      const dayName = days[now.getDay()];
+      const currentLang = document.getElementById('htmlRoot').getAttribute('lang') || 'vi';
+      
+      let dayName = "";
+      if (currentLang === 'vi') {
+        const daysVi = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+        dayName = daysVi[now.getDay()];
+      } else {
+        const daysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        dayName = daysEn[now.getDay()];
+      }
 
       const day = String(now.getDate()).padStart(2, '0');
       const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -622,11 +818,12 @@
     function runSpeedTest() {
       const resultEl = document.getElementById('speedResult');
       const btnTest = document.getElementById('btnTest');
+      const currentLang = document.getElementById('htmlRoot').getAttribute('lang') || 'vi';
       
       resultEl.style.color = "#ffd700";
-      resultEl.innerText = "Đang đo tốc độ mạng...";
+      resultEl.innerText = (currentLang === 'vi') ? "Đang đo tốc độ mạng..." : "Testing network speed...";
       btnTest.disabled = true;
-      btnTest.innerText = "Đang kiểm tra...";
+      btnTest.innerText = (currentLang === 'vi') ? "Đang kiểm tra..." : "Checking...";
 
       const imageAddr = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Falken_Eifel_I.jpg?t=" + Date.now();
       const startTime = performance.now();
@@ -639,7 +836,7 @@
         const duration = (endTime - startTime) / 1000;
         
         if (duration <= 0) {
-          resultEl.innerText = "Mạng siêu tốc! 🚀";
+          resultEl.innerText = (currentLang === 'vi') ? "Mạng siêu tốc! 🚀" : "Super fast network! 🚀";
           resetButton();
           return;
         }
@@ -651,16 +848,16 @@
 
         resultEl.style.color = "#00ff80";
         if (speedMbps >= 1) {
-          resultEl.innerText = `Tốc độ: ${speedMbps.toFixed(2)} Mbps 🔥`;
+          resultEl.innerText = `Speed: ${speedMbps.toFixed(2)} Mbps 🔥`;
         } else {
-          resultEl.innerText = `Tốc độ: ${speedKbps.toFixed(2)} Kbps 🐢`;
+          resultEl.innerText = `Speed: ${speedKbps.toFixed(2)} Kbps 🐢`;
         }
         resetButton();
       };
 
       downloadImage.onerror = function () {
         resultEl.style.color = "#ff4d4d";
-        resultEl.innerText = "Lỗi: Kiểm tra lại kết nối hoặc tắt Trình chặn quảng cáo!";
+        resultEl.innerText = (currentLang === 'vi') ? "Lỗi: Kiểm tra kết nối hoặc tắt trình chặn quảng cáo!" : "Error: Check connection or disable AdBlocker!";
         resetButton();
       };
 
@@ -668,7 +865,7 @@
 
       function resetButton() {
         btnTest.disabled = false;
-        btnTest.innerText = "BẮT ĐẦU ĐO TỐC ĐỘ";
+        btnTest.innerText = (currentLang === 'vi') ? "BẮT ĐẦU ĐO TỐC ĐỘ" : "START SPEED TEST";
       }
     }
 
@@ -681,6 +878,7 @@
       const genderInput = document.getElementById('gender');
       const submitBtn = document.getElementById('btnSubmit');
       const greetingEl = document.getElementById('greeting');
+      const currentLang = document.getElementById('htmlRoot').getAttribute('lang') || 'vi';
 
       const name = nameInput.value.trim();
       const age = ageInput.value.trim();
@@ -688,12 +886,12 @@
 
       if (!name || !age || !gender) {
         greetingEl.style.color = "#ff4d4d";
-        greetingEl.innerText = "Vui lòng điền đầy đủ thông tin.";
+        greetingEl.innerText = (currentLang === 'vi') ? "Vui lòng điền đầy đủ thông tin." : "Please fill in all information.";
         return;
       }
 
       submitBtn.disabled = true;
-      submitBtn.innerText = "Đang kết nối...";
+      submitBtn.innerText = (currentLang === 'vi') ? "Đang kết nối..." : "Connecting...";
 
       const newEndTime = Date.now() + TOTAL_SECONDS * 1000;
       localStorage.setItem('wifi_end_time', newEndTime);
@@ -712,10 +910,12 @@
       })
       .then(() => {
         greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi Free 24h tốc độ cao 🎮⚡`;
+        greetingEl.innerText = (currentLang === 'vi') 
+          ? `Xin chào ${name} (${gender}, ${age} tuổi)! Chúc bạn trải nghiệm WiFi Free 24h tốc độ cao 🎮⚡`
+          : `Hello ${name} (${gender}, ${age} yrs)! Enjoy your 24h High-Speed Free WiFi 🎮⚡`;
         
         submitBtn.disabled = false;
-        submitBtn.innerText = "TRUY CẬP INTERNET";
+        submitBtn.innerText = (currentLang === 'vi') ? "TRUY CẬP INTERNET" : "ACCESS INTERNET";
         nameInput.value = '';
         ageInput.value = '';
         genderInput.value = '';
@@ -723,9 +923,11 @@
       .catch(err => {
         console.error("Lỗi:", err);
         greetingEl.style.color = "#ffd700";
-        greetingEl.innerText = `Xin chào ${name}! Đã kết nối WiFi 24h 🎮⚡`;
+        greetingEl.innerText = (currentLang === 'vi') 
+          ? `Xin chào ${name}! Đã kết nối WiFi 24h 🎮⚡`
+          : `Hello ${name}! Connected to 24h WiFi 🎮⚡`;
         submitBtn.disabled = false;
-        submitBtn.innerText = "TRUY CẬP INTERNET";
+        submitBtn.innerText = (currentLang === 'vi') ? "TRUY CẬP INTERNET" : "ACCESS INTERNET";
       });
     }
   </script>
