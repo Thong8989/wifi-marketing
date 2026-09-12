@@ -308,12 +308,45 @@
       margin-top: 10px;
     }
 
+    /* PHẦN CẢNH BÁO & BẢN QUYỀN */
+    .disclaimer-section {
+      max-width: 1050px;
+      margin: 40px auto;
+      background: rgba(20, 15, 15, 0.95);
+      border: 2px dashed #ff4d4d;
+      border-radius: 15px;
+      padding: 25px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(255, 77, 77, 0.2);
+    }
+    .disclaimer-section h3 {
+      color: #ff4d4d;
+      font-size: 20px;
+      margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #442222;
+      padding-bottom: 10px;
+    }
+    .disclaimer-section p, .disclaimer-section ul li {
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .disclaimer-section ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    .disclaimer-section ul li {
+      margin-bottom: 6px;
+    }
+
     footer {
       text-align: center;
-      padding: 25px 20px;
+      padding: 30px 20px;
       background: #111;
       margin-top: 40px;
-      font-size: 15px;
+      font-size: 14px;
       color: #aaa;
       border-top: 1px solid #222;
     }
@@ -321,6 +354,14 @@
       color: #00ff80;
       font-size: 18px;
       font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .copyright {
+      margin-top: 15px;
+      color: #777;
+      font-size: 13px;
+      border-top: 1px dashed #333;
+      padding-top: 15px;
     }
   </style>
 </head>
@@ -491,15 +532,34 @@
     <img src="images/callofduty.jpg" alt="Call of Duty">
   </div>
 
-  <!-- Footer -->
+  <!-- PHẦN CẢNH BÁO & ĐIỀU KHOẢN SỬ DỤNG (DISCLAIMER) -->
+  <div class="disclaimer-section">
+    <h3>⚠️ Cảnh Báo & Điều Khoản Sử Dụng WiFi</h3>
+    <p>Khi truy cập và sử dụng hệ thống mạng Internet tại <b>Tạp Hóa Ya Thông</b>, người dùng vui lòng lưu ý các điều khoản sau:</p>
+    <ul>
+      <li><b>Trách nhiệm pháp lý:</b> Nghiêm cấm sử dụng hệ thống mạng của quán để thực hiện các hành vi vi phạm pháp luật nhà nước (truy cập nội dung đồi trụy, phát tán thông tin sai lệch, tấn công mạng, hack, lừa đảo trực tuyến...). Mọi hành vi vi phạm cá nhân phải hoàn toàn chịu trách nhiệm trước pháp luật.</li>
+      <li><b>Bảo mật thông tin:</b> Chúng tôi thu thập thông tin cơ bản (Tên, tuổi, giới tính) nhằm mục đích quản lý kết nối và nâng cao chất lượng dịch vụ. Chúng tôi cam kết bảo mật thông tin cá nhân và không chia sẻ cho bên thứ ba trái phép.</li>
+      <li><b>An toàn trực tuyến:</b> Khách hàng tự chịu trách nhiệm bảo mật thông tin tài khoản ngân hàng, mật khẩu game và dữ liệu cá nhân khi sử dụng mạng công cộng.</li>
+    </ul>
+  </div>
+
+  <!-- Footer & Bản Quyền -->
   <footer>
     <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
     <p>💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" rel="noopener noreferrer" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
     <p>Tạp Hóa Ya Thông – Phục vụ tận tâm!</p>
+    
+    <div class="copyright">
+      © <span id="currentYear"></span> <strong>Tạp Hóa Ya Thông</strong>. All Rights Reserved.<br>
+      Designed & Maintained by <strong>Ya Thông</strong> (KRĂ JẴN YA THÔNG).
+    </div>
   </footer>
 
   <script>
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqazkwI7UFW8NoS3shgEFkNUJc-c4dauNWrW3I5mHAsuXteYpVOJIzwvVymKyy8PJ8sQ/exec";
+
+    // --- TỰ ĐỘNG CẬP NHẬT NĂM BẢN QUYỀN ---
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
 
     // --- SCRIPT HIỂN THỊ NGÀY THÁNG NĂM GIỜ REAL-TIME ---
     function updateClock() {
