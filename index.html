@@ -139,47 +139,6 @@
       box-shadow: 0 0 10px #00ff80;
     }
 
-    /* KHU VỰC CHỌN CARD NHÀ MẠNG / THẺ GAME */
-    .card-selection-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-    .card-option {
-      border: 2px solid #444;
-      border-radius: 8px;
-      overflow: hidden;
-      cursor: pointer;
-      background: #1e1e1e;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .card-option input[type="radio"] {
-      display: none;
-    }
-    .card-option img {
-      width: 100%;
-      height: 60px;
-      object-fit: cover;
-      display: block;
-    }
-    .card-option span {
-      display: block;
-      font-size: 11px;
-      padding: 4px 0;
-      color: #ccc;
-      background: #111;
-    }
-    .card-option.selected {
-      border-color: #00ff80;
-      box-shadow: 0 0 10px #00ff80;
-    }
-    .card-option.selected span {
-      color: #00ff80;
-      font-weight: bold;
-    }
-
     button {
       width: 100%;
       background: linear-gradient(90deg, #ff0080, #00ff80, #00c3ff);
@@ -257,6 +216,33 @@
       font-size: 15px;
       line-height: 1.5;
       color: #ddd;
+    }
+
+    /* LƯỚI HIỂN THỊ CÁC LOẠI THẺ TẠI MỤC DỊCH VỤ */
+    .service-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .service-card-item {
+      border: 1px solid #444;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #111;
+      text-align: center;
+    }
+    .service-card-item img {
+      width: 100%;
+      height: 45px;
+      object-fit: cover;
+      display: block;
+    }
+    .service-card-item span {
+      display: block;
+      font-size: 10px;
+      padding: 3px 0;
+      color: #00ff80;
     }
 
     /* KHU VỰC MOMO */
@@ -352,7 +338,7 @@
     <div class="datetime-display" id="currentDateTime">📅 Đang tải thời gian...</div>
   </div>
 
-  <!-- Form Đăng Nhập WiFi -->
+  <!-- Form Đăng Nhập WiFi (Đã bỏ chọn thẻ) -->
   <div class="container">
     <h2>Kết Nối WiFi Miễn Phí</h2>
     <form onsubmit="handleFormSubmit(event)">
@@ -368,35 +354,6 @@
         <option value="Nam">Nam</option>
         <option value="Nữ">Nữ</option>
       </select>
-
-      <label>Chọn loại thẻ quan tâm:</label>
-      <div class="card-selection-grid">
-        <label class="card-option" onclick="selectCard(this)">
-          <input type="radio" name="cardType" value="Viettel">
-          <img src="images/viettel-card.jpg" alt="Viettel">
-          <span>Viettel</span>
-        </label>
-        <label class="card-option" onclick="selectCard(this)">
-          <input type="radio" name="cardType" value="Vinaphone">
-          <img src="images/vinaphone-card.jpg" alt="Vinaphone">
-          <span>Vinaphone</span>
-        </label>
-        <label class="card-option" onclick="selectCard(this)">
-          <input type="radio" name="cardType" value="Mobifone">
-          <img src="images/mobifone-card.jpg" alt="Mobifone">
-          <span>Mobifone</span>
-        </label>
-        <label class="card-option" onclick="selectCard(this)">
-          <input type="radio" name="cardType" value="Garena">
-          <img src="images/garena-card.jpg" alt="Garena">
-          <span>Garena</span>
-        </label>
-        <label class="card-option" onclick="selectCard(this)">
-          <input type="radio" name="cardType" value="Zing">
-          <img src="images/zing-card.jpg" alt="Zing">
-          <span>Zing Card</span>
-        </label>
-      </div>
 
       <button type="submit" id="btnSubmit">TRUY CẬP INTERNET</button>
     </form>
@@ -416,7 +373,7 @@
     <button type="button" id="btnTest" onclick="runSpeedTest()" style="background: linear-gradient(90deg, #00c3ff, #00ff80);">BẮT ĐẦU ĐO TỐC ĐỘ</button>
   </div>
 
-  <!-- Khai Thác Quảng Cáo Dịch Vụ -->
+  <!-- Khai Thác Quảng Cáo Dịch Vụ (Đã đưa phần Thẻ Cào / Thẻ Game xuống đây) -->
   <div class="services-wrapper">
     <h2 class="services-title">🌟 DỊCH VỤ TẠI TẠP HÓA YA THÔNG 🌟</h2>
     
@@ -429,6 +386,30 @@
           <li>💡 <b>Hóa Đơn:</b> Điện, nước, internet, truyền hình.</li>
           <li>🥤 <b>Nước giải khát, bánh kẹo</b> đa dạng phục vụ tại chỗ.</li>
         </ul>
+
+        <!-- Lưới hiển thị các loại thẻ cào/game tích hợp -->
+        <div class="service-card-grid">
+          <div class="service-card-item">
+            <img src="images/viettel-card.jpg" alt="Viettel">
+            <span>Viettel</span>
+          </div>
+          <div class="service-card-item">
+            <img src="images/vinaphone-card.jpg" alt="Vinaphone">
+            <span>Vinaphone</span>
+          </div>
+          <div class="service-card-item">
+            <img src="images/mobifone-card.jpg" alt="Mobifone">
+            <span>Mobifone</span>
+          </div>
+          <div class="service-card-item">
+            <img src="images/garena-card.jpg" alt="Garena">
+            <span>Garena</span>
+          </div>
+          <div class="service-card-item">
+            <img src="images/zing-card.jpg" alt="Zing">
+            <span>Zing Card</span>
+          </div>
+        </div>
       </div>
 
       <div class="service-card">
@@ -511,7 +492,7 @@
     <img src="images/callofduty.jpg" alt="Call of Duty">
   </div>
 
-  <!-- Footer (Đã tích hợp chính xác link Facebook của bạn) -->
+  <!-- Footer -->
   <footer>
     <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
     <p>💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
@@ -520,14 +501,6 @@
 
   <script>
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqazkwI7UFW8NoS3shgEFkNUJc-c4dauNWrW3I5mHAsuXteYpVOJIzwvVymKyy8PJ8sQ/exec";
-
-    // --- CHỌN CARD THẺ ---
-    function selectCard(element) {
-      document.querySelectorAll('.card-option').forEach(opt => opt.classList.remove('selected'));
-      element.classList.add('selected');
-      const radio = element.querySelector('input[type="radio"]');
-      if(radio) radio.checked = true;
-    }
 
     // --- SCRIPT HIỂN THỊ NGÀY THÁNG NĂM GIỜ REAL-TIME ---
     function updateClock() {
@@ -640,21 +613,19 @@
       }
     }
 
-    // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP ---
+    // --- SCRIPT XỬ LÝ FORM ĐĂNG NHẬP (Đã bỏ dữ liệu cardType) ---
     function handleFormSubmit(event) {
       event.preventDefault();
 
       const nameInput = document.getElementById('name');
       const ageInput = document.getElementById('age');
       const genderInput = document.getElementById('gender');
-      const selectedCard = document.querySelector('input[name="cardType"]:checked');
       const submitBtn = document.getElementById('btnSubmit');
       const greetingEl = document.getElementById('greeting');
 
       const name = nameInput.value.trim();
       const age = ageInput.value.trim();
       const gender = genderInput.value;
-      const cardType = selectedCard ? selectedCard.value : "Không chọn";
 
       if (!name || !age || !gender) {
         greetingEl.style.color = "#ff4d4d";
@@ -677,8 +648,7 @@
         body: JSON.stringify({
           name: name,
           age: age,
-          gender: gender,
-          cardType: cardType
+          gender: gender
         })
       })
       .then(() => {
