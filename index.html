@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Access Point Free - Đa Dịch Vụ & WiFi Free</title>
+  <title>Tạp Hóa Ya Thông - Đa Dịch Vụ & WiFi Gaming</title>
   
   <!-- CÁC THẺ KHAI BÁO ICON CHO TRANG WEB -->
   <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
@@ -405,8 +405,8 @@
       <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
     </div>
 
-    <h1 data-key="mainTitle">Access Point Free</h1>
-    <p data-key="mainSubtitle"> Wifi Free – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
+    <h1 data-key="mainTitle">Tạp Hóa Ya Thông</h1>
+    <p data-key="mainSubtitle">WiFi Miễn Phí Tốc Độ Cao – Đa Dịch Vụ Phục Vụ 🚀🎮</p>
   </header>
 
   <!-- BỘ ĐẾM NGƯỢC & NGÀY THÁNG NĂM GIỜ -->
@@ -584,7 +584,7 @@
   <footer>
     <p class="hotline">📞 Hotline / Zalo: 0823611673</p>
     <p data-key="fbText">💬 Facebook Cá Nhân: <a href="https://www.facebook.com/thong.ya.52" target="_blank" rel="noopener noreferrer" style="color: #00c3ff; text-decoration: none; font-weight: bold;">Ya Thông (Kết nối ngay)</a></p>
-    <p data-key="footerSlogan">Cảm ơn vì đã đọc hết  – Phục vụ tận tâm!</p>
+    <p data-key="footerSlogan">Tạp Hóa Ya Thông – Phục vụ tận tâm!</p>
     
     <div class="copyright">
       © <span id="currentYear"></span> <strong>Tạp Hóa Ya Thông</strong>. <span data-key="rightsText">Bảo lưu mọi quyền</span>.<br>
@@ -598,7 +598,7 @@
     // --- BỘ TỪ ĐIỂN ĐA NGÔN NGỮ (VI / EN) ---
     const dict = {
       vi: {
-        mainTitle: "Điểm truy cập Wifi Free Ya Thông",
+        mainTitle: "Tạp Hóa Ya Thông",
         mainSubtitle: "WiFi Miễn Phí Tốc Độ Cao – Đa Dịch Vụ Phục Vụ 🚀🎮",
         timerTitle: "⏱️ Thời gian truy cập còn lại:",
         wifiFormTitle: "Kết Nối WiFi Miễn Phí",
@@ -714,11 +714,9 @@
     function setLanguage(lang) {
       document.getElementById('htmlRoot').setAttribute('lang', lang);
       
-      // Đổi trạng thái active nút bấm
       document.getElementById('btnVi').classList.toggle('active', lang === 'vi');
       document.getElementById('btnEn').classList.toggle('active', lang === 'en');
 
-      // Cập nhật text cho các thẻ có data-key
       const elements = document.querySelectorAll('[data-key]');
       elements.forEach(el => {
         const key = el.getAttribute('data-key');
@@ -727,7 +725,6 @@
         }
       });
 
-      // Cập nhật placeholder cho input
       const inputs = document.querySelectorAll('[data-placeholder]');
       inputs.forEach(input => {
         const pKey = input.getAttribute('data-placeholder');
@@ -736,11 +733,9 @@
         }
       });
 
-      // Lưu lựa chọn ngôn ngữ của người dùng vào localStorage
       localStorage.setItem('preferred_lang', lang);
     }
 
-    // Tự động khôi phục ngôn ngữ đã chọn trước đó (nếu có)
     window.addEventListener('DOMContentLoaded', () => {
       const savedLang = localStorage.getItem('preferred_lang') || 'vi';
       setLanguage(savedLang);
